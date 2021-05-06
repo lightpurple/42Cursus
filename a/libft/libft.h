@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:46:12 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/06 21:49:27 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/06 22:37:52 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 int		ft_atoi(const char *str);
 char	*strnstr(const char *haystack, const char *needle, size_t len);
 char	*strdup(const char *s1);
-
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
