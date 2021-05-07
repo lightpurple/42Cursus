@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 22:38:06 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/06 23:08:36 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/07 10:32:33 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	s_len = ft_strlen(s);
-	if (s_len < start)
-		return (NULL);
+	if (s_len <= start)
+	{
+		if (!(sub = (char *)malloc(sizeof(char))))
+			return (NULL);
+		*sub = '\0';
+		return (sub);
+	}
 	if (s_len - start + 1 < len)
 		sub = (char *)malloc(sizeof(char) * (s_len - start + 1));
 	else
-		sub = (char *)malloc(sizeof(char) * len);
+		sub = (char *)malloc(sizeof(char) * (len + 1));
 	if (!sub)
 		return (NULL);
 	i = 0;
