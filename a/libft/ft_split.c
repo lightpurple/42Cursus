@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:33:05 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/07 17:31:28 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/08 14:38:50 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,12 @@ static int	cnt_str(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
-	char	*temp;
-	int		cnt;
+	int		i;
 
 	if (!s)
 		return (NULL);
-	cnt = cnt_str(s, c);
-	if (!(str = (char **)malloc(sizeof(char *) * (cnt + 1))))
+	if (!(str = (char **)malloc(sizeof(char *) * (cnt_str(s, c) + 1))))
 		return (NULL);
-	str[cnt] = 0;
-	temp = (char *)s;
-	while (*temp)
-	{
-		if ()
-	}
-	
+	i = 0;
+	while ()
 }
