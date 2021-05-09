@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 10:46:44 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/07 17:17:35 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/09 18:38:33 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*res;
 
-	if (!s1 && !set)
+	if (!s1 || !set)
 		return (NULL);
 	start = 0;
 	end = ft_strlen(s1) - 1;
