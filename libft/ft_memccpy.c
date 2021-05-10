@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:26:41 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/05 18:12:38 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:16:07 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	size_t			i;
 
 	if (!dst && !src)
-		return NULL;
+		return (NULL);
 	stop = (unsigned char)c;
 	i = 0;
 	while (n--)
