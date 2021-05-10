@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:33:05 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/10 11:13:13 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 20:10:05 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,9 @@ static int	cnt_str(char const *s, char c)
 
 static void	ft_make_free(char **str, int i)
 {
-	while (--i > 0)
+	while (--i >= 0)
 		free(str[i]);
 	free(str);
-}
-
-static int	ft_find_c(char *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
 }
 
 static char	*ft_strndup(char *s, int cnt)
@@ -64,26 +54,27 @@ static char	*ft_strndup(char *s, int cnt)
 char		**ft_split(char const *s, char c)
 {
 	char	**str;
-	int		len;
+	char	*start;
 	int		i;
 
-	if (!s)
+	if (!s || !(str = (char **)malloc(sizeof(char *) * (cnt_str(s, c) + 1))))
 		return (NULL);
-	len = cnt_str(s, c);
-	if (!(str = (char **)malloc(sizeof(char *) * (len + 1))))
-		return (NULL);
-	i = -1;
-	while (++i < len)
+	i = 0;
+	while (*s)
 	{
 		while (*s == c)
 			s++;
-		if (!(str[i] = ft_strndup((char *)s, ft_find_c((char *)s, c))))
+		if (!*s)
+			break ;
+		start = (char *)s;
+		while (*s != c && *s)
+			s++;
+		if (!(str[i] = ft_strndup(start, s - start)))
 		{
 			ft_make_free(str, i);
-			return (NULL);
+			break ;
 		}
-		while (*s != c)
-			s++;
+		i++;
 	}
 	str[i] = 0;
 	return (str);
