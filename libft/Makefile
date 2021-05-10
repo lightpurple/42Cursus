@@ -6,7 +6,7 @@
 #    By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 12:10:22 by euhong            #+#    #+#              #
-#    Updated: 2021/05/09 21:15:29 by euhong           ###   ########.fr        #
+#    Updated: 2021/05/10 10:26:34 by euhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FILE = ft_memset ft_strlen ft_bzero ft_memcpy ft_memccpy ft_memmove\
 		ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd\
 
 BONUS_FILE = ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back\
-			ft_lstdelone
+			ft_lstdelone ft_lstclear
 SRCS = $(addsuffix .c, $(FILE))
 OBJS = $(SRCS:.c=.o)
 BONUS_SRCS = $(addsuffix .c, $(BONUS_FILE))
