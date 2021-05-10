@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 18:40:41 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/09 18:57:36 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:14:08 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char		*res;
-	int			i;
+	char	*res;
+	int		i;
 
 	if (!s)
 		return (NULL);

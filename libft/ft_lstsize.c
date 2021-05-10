@@ -6,22 +6,22 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 20:59:00 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/09 21:02:32 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:12:01 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	int		len;
+	int	len;
 
 	if (!lst)
 		return (0);
 	len = 1;
-	while (lst -> next)
+	while (lst->next)
 	{
-		lst = lst -> next;
+		lst = lst->next;
 		len++;
 	}
 	return (len);

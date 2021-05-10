@@ -6,15 +6,15 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:00:23 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/05 21:34:08 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:13:21 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	char *temp;
+	char	*temp;
 
 	temp = (char *)s;
 	if (*temp == (char)c)

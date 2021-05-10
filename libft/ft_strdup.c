@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 21:49:33 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/06 22:26:49 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:13:30 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *s1)
 	size_t	len;
 
 	len = ft_strlen(s1);
-	if(!(temp = (char *)malloc(sizeof(char) * (len + 1))))
+	if (!(temp = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	temp[len] = '\0';
 	if (len == 0)

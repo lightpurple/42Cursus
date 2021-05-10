@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 10:46:44 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/09 18:38:33 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:14:28 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_find_c(char c, char *str)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;

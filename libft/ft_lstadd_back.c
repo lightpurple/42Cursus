@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 21:05:56 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/09 22:06:49 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:10:59 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	lst_temp = ft_lstlast(*lst);
 	new_temp = ft_lstlast(new);
-	new_temp -> next = lst_temp -> next;
-	lst_temp -> next = new;
+	new_temp->next = lst_temp->next;
+	lst_temp->next = new;
 }

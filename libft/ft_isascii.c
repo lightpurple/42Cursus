@@ -6,13 +6,13 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 11:09:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/06 11:11:54 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:10:31 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }

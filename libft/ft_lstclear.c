@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 10:27:02 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/10 10:58:33 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:11:40 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		free(lst);
 		return ;
 	}
-	temp = (*lst) -> next;
+	temp = (*lst)->next;
 	del(*lst);
 	while (temp)
 	{
 		*lst = temp;
-		temp = temp -> next;
+		temp = temp->next;
 		del(*lst);
 	}
 	free(lst);

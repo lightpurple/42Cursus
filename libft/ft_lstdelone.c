@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 21:10:07 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/10 10:18:06 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:11:46 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst)
 		return ;
-	del(lst -> content);
+	del(lst->content);
 	free(lst);
 }

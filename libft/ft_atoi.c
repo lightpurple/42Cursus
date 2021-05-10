@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:45:16 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/06 21:40:08 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:09:50 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static int	ft_find_c(char c, char *str)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	unsigned long	res;
-	int	sign;
-	int i;
+	int				sign;
+	int				i;
 
 	res = 0;
 	sign = 1;

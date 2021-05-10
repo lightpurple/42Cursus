@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:59:42 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/06 21:14:53 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:14:19 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_find_c(char *src, char *find)
 	return (1);
 }
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	needle_len;

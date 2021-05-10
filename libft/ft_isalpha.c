@@ -6,13 +6,13 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 23:15:40 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/06 11:03:14 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:10:24 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }

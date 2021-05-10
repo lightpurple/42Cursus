@@ -6,13 +6,13 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 20:30:47 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/05 20:41:36 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:12:13 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	void	*result;
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:33:05 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/09 18:34:48 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:13:13 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	cnt_str(char const *s, char c)
 {
-	int cnt;
+	int	cnt;
 
 	cnt = 0;
 	while (*s)
@@ -30,16 +30,16 @@ static int	cnt_str(char const *s, char c)
 	return (cnt);
 }
 
-static void		ft_make_free(char **str, int i)
+static void	ft_make_free(char **str, int i)
 {
 	while (--i > 0)
 		free(str[i]);
 	free(str);
 }
 
-static int		ft_find_c(char *s, char c)
+static int	ft_find_c(char *s, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] && s[i] != c)
@@ -61,7 +61,7 @@ static char	*ft_strndup(char *s, int cnt)
 	return (temp);
 }
 
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	char	**str;
 	int		len;

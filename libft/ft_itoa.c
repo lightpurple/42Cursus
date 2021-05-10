@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 14:50:03 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/07 16:29:15 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:10:51 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	cnt_num(int n)
 	return (cnt);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char	*num;
 	int		len;
