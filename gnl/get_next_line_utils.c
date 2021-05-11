@@ -6,10 +6,18 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:17 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/11 11:25:33 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/11 18:47:29 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+size_t	ft_strlen(char *str)
+{
+	size_t i;
 
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
