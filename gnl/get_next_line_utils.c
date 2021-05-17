@@ -6,18 +6,68 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:17 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/11 18:47:29 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/17 19:49:54 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	size_t i;
+	int i;
 
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
+}
+
+char	*ft_strncpy(char *dst, char *src, int len)
+{
+	int i;
+
+	i = -1;
+	while (++i < len)
+		dst[i] = src[i];
+	return (dst);
+}
+
+int	ft_find_newline(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '\n')
+			return (i);
+	return (-1);
+}
+
+char	*ft_strncat(char *dst, char *src, int len)
+{
+	int i;
+	int j;
+
+	i = ft_strlen(dst);
+	j = 0;
+	while (j < len)
+		dst[i++] = src[j++];
+	return (dst);
+}
+
+char	*ft_strdup(char *s1)
+{
+	char	*temp;
+	int		len;
+
+	len = ft_strlen(s1);
+	if (!(temp = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	temp[len] = '\0';
+	if (len == 0)
+		return (temp);
+	while (--len)
+		temp[len] = s1[len];
+	temp[len] = s1[len];
+	return (temp);
 }
