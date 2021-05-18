@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:44 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/18 18:31:11 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/18 18:46:41 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,11 @@ int		ft_end_of_file(char **str, char **line, int size)
 
 int		get_next_line(int fd, char **line)
 {
-	char	buf[BUFFER_SIZE + 1];
-	int		size;
-	int		loc;
+	static char *str[OPEN_MAX] = { 0, };
+	char		buf[BUFFER_SIZE + 1];
+	int			size;
+	int			loc;
 
-	static char *str[OPEN_MAX] = {
-		0,
-	};
 	if (fd < 0 || fd >= OPEN_MAX || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	while ((size = read(fd, buf, BUFFER_SIZE)) > 0)
