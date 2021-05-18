@@ -6,15 +6,15 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:17 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/18 18:05:17 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/18 18:26:49 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -24,7 +24,7 @@ int	ft_strlen(char *str)
 
 char	*ft_strncpy(char *dst, char *src, int len)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < len)
@@ -32,7 +32,7 @@ char	*ft_strncpy(char *dst, char *src, int len)
 	return (dst);
 }
 
-int	ft_find_newline(char *str)
+int		ft_find_newline(char *str)
 {
 	int	i;
 
@@ -45,8 +45,8 @@ int	ft_find_newline(char *str)
 
 char	*ft_strncat(char *dst, char *src, int len)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = ft_strlen(dst);
 	j = 0;

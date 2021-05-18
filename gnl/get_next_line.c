@@ -6,13 +6,13 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:44 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/18 18:08:24 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/18 18:31:11 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_str_append(char *str, char *buf, int b_len)
+char	*ft_str_append(char *str, char *buf, int b_len)
 {
 	char	*res;
 	int		s_len;
@@ -31,21 +31,21 @@ static char	*ft_str_append(char *str, char *buf, int b_len)
 	return (res);
 }
 
-static int	ft_split_linefid(char **str, char **line, int loc)
+int		ft_split_linefid(char **str, char **line, int loc)
 {
 	char	*temp;
 
 	if (!(*line = (char *)malloc(sizeof(char) * (loc + 1))))
 	{
-		free (*str);
+		free(*str);
 		return (-1);
 	}
 	(*line)[loc] = '\0';
 	*line = ft_strncpy(*line, *str, loc);
 	if (!(temp = ft_strdup(*str + loc + 1)))
 	{
-		free (*str);
-		free (*line);
+		free(*str);
+		free(*line);
 		return (-1);
 	}
 	free(*str);
@@ -53,14 +53,14 @@ static int	ft_split_linefid(char **str, char **line, int loc)
 	return (1);
 }
 
-static int	ft_end_of_file(char **str, char **line, int size)
+int		ft_end_of_file(char **str, char **line, int size)
 {
-	int loc;
+	int	loc;
 
 	if (size < 0)
 	{
 		if (*str)
-			free (*str);
+			free(*str);
 		return (-1);
 	}
 	else if (*str)
@@ -70,19 +70,20 @@ static int	ft_end_of_file(char **str, char **line, int size)
 		*line = *str;
 		*str = NULL;
 	}
-	else
-		if (!(*line = ft_strdup("")))
-			return (-1);
+	else if (!(*line = ft_strdup("")))
+		return (-1);
 	return (0);
 }
 
-int			get_next_line(int fd, char **line)
+int		get_next_line(int fd, char **line)
 {
-	static char	*str[OPEN_MAX] = {0,};
-	char		buf[BUFFER_SIZE + 1];
-	int			size;
-	int			loc;
+	char	buf[BUFFER_SIZE + 1];
+	int		size;
+	int		loc;
 
+	static char *str[OPEN_MAX] = {
+		0,
+	};
 	if (fd < 0 || fd >= OPEN_MAX || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	while ((size = read(fd, buf, BUFFER_SIZE)) > 0)
