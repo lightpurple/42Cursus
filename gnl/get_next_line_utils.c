@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:17 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/17 19:49:54 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/18 18:05:17 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	*ft_strncat(char *dst, char *src, int len)
 	j = 0;
 	while (j < len)
 		dst[i++] = src[j++];
+	dst[i] = '\0';
 	return (dst);
 }
 
