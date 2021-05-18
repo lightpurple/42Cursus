@@ -6,21 +6,23 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:01:43 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/18 18:27:00 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/18 18:38:28 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdlib.h>
-# include <unistd.h>
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
 
-# define OPEN_MAX 256
+# ifndef OPEN_MAX
+#  define OPEN_MAX 256
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
 
 int		get_next_line(int fd, char **line);
 int		ft_strlen(char *str);

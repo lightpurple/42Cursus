@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:01:43 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/18 18:26:40 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/18 18:37:46 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 #  define BUFFER_SIZE 1024
 # endif
 
-# define OPEN_MAX 256
+# ifndef OPEN_MAX
+#  define OPEN_MAX 256
+# endif
 
 int		get_next_line(int fd, char **line);
 int		ft_strlen(char *str);
