@@ -6,11 +6,11 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:44 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/18 18:47:16 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 09:12:08 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_str_append(char *str, char *buf, int b_len)
 {

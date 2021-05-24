@@ -6,11 +6,11 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:17 by euhong            #+#    #+#             */
-/*   Updated: 2021/05/18 18:27:11 by euhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 09:12:23 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int		ft_strlen(char *str)
 {
