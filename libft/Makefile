@@ -6,7 +6,7 @@
 #    By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 12:10:22 by euhong            #+#    #+#              #
-#    Updated: 2021/05/10 14:58:20 by euhong           ###   ########.fr        #
+#    Updated: 2021/06/08 16:53:19 by euhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+	$(AR) $(ARFLAGS) $@ $?
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
@@ -53,6 +53,6 @@ fclean : clean
 re : fclean all
 
 bonus : $(OBJS) $(BONUS_OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $^
+	$(AR) $(ARFLAGS) $(NAME) $?
 
 .PHONY : all clean fclean re bonus
