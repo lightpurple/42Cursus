@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 19:35:13 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/15 15:59:21 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/15 22:01:10 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int			is_type(char c);
 typedef	struct	s_info
 {
 	int		minus;
+	int		plus;
+	int		space;
+	int		sharp;
 	int		zero;
 	int		width;
 	int		prec;
-	int		sign;
+	char	star[2];
 	char	type;
 }				t_info
 
