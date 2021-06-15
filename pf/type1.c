@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   type1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 19:35:13 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/14 22:20:50 by euhong           ###   ########.fr       */
+/*   Created: 2021/06/15 15:57:14 by euhong            #+#    #+#             */
+/*   Updated: 2021/06/15 19:27:14 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "printf.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-int	ft_printf(const char *str, ...);
-int			is_type(char c);
-
-typedef	struct	s_info
+int	printid(va_list	ap, t_info info)
 {
-	int		sign;
-	int		zero;
-	int		prec;
-	int		width;
-	char	type;
-}				t_info
 
-#endif
+}
+
+int	printc(va_list ap, t_info info)
+{
+
+}
+
+int	prints(va_list *ap, t_info info)
+{
+
+}
+
+int	printu(va_list ap, t_info info)
+{
+
+}
+
+int	printp(va_list ap, t_info info)
+{
+
+}

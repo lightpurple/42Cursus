@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:56:35 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/14 22:21:20 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/15 16:10:00 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init_info(t_info	*info)
 {
 	info->sign = 0;
+	info->minus = 0;
 	info->zero = 0;
 	info->prec = -1;
 	info->width = 0;
@@ -23,7 +24,27 @@ void	init_info(t_info	*info)
 
 int		print_info(va_list	ap, t_info	info)
 {
+	int	len;
 
+	if (info->type == 'i' || info->type == 'd')
+		len = printid(va_arg(ap, int), info);
+	if (info->type == 'c')
+		len = printc(va_arg(ap, char), info);
+	if (info->type == 's')
+		len = prints(va_arg(ap, char *), info);
+	if (info->type == 'u')
+		len = printu(va_arg(ap, unsigned int), info);
+	if (info->type == 'p')
+		len = printp(va_arg(ap, void *), info);
+	if (info->type == 'x')
+		len = printx(va_arg(ap, int), info);
+	if (info->type == 'X')
+		len = printux(va_arg(ap, int), info);
+	if (info->type == 'n')
+		len = printn(&(va_arg(ap, int *)), info);
+	if (info->type == '%')
+		len = write(1, "%", 1);
+	return (len);
 }
 
 int		set_info(t_info	*info, char **str)
@@ -72,21 +93,14 @@ int		find_type(va_list ap, char **str)
 int		treat_format(va_list ap, char *str)
 {
 	int 	len;
-	int		cnt;
 
 	len = 0;
 	while (*str)
 	{
 		if (*str == %)
-		{
-			cnt = find_type(ap, &str);
-			len += cnt;
-		}
+			len += find_type(ap, &str);
 		else
-		{
-			write(1, str, 1);
-			len++;
-		}
+			len += write(1, str, 1);
 		str++;
 	}
 	return (len);
