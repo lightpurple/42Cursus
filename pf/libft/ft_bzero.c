@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/16 15:06:56 by euhong           ###   ########.fr       */
+/*   Created: 2021/05/05 16:04:20 by euhong            #+#    #+#             */
+/*   Updated: 2021/05/10 11:09:56 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-int			is_type(char c)
+void	ft_bzero(void *s, size_t n)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
-	c == 'x' || c == 'X' || c == '%' || c == 'n')
-		return (0);
-	return (1);
+	size_t	i;
+
+	i = 0;
+	while (n--)
+		((unsigned char *)s)[i++] = 0;
 }

@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/16 15:06:56 by euhong           ###   ########.fr       */
+/*   Created: 2021/05/06 11:19:44 by euhong            #+#    #+#             */
+/*   Updated: 2021/05/10 11:13:57 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-int			is_type(char c)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
-	c == 'x' || c == 'X' || c == '%' || c == 'n')
+	size_t	src_len;
+	size_t	i;
+
+	if (!src)
 		return (0);
-	return (1);
+	src_len = ft_strlen(src);
+	if (dstsize)
+	{
+		i = -1;
+		while (src[++i] && i < dstsize - 1)
+			dst[i] = src[i];
+		dst[i] = '\0';
+	}
+	return (src_len);
 }

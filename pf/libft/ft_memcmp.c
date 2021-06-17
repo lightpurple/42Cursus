@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/16 15:06:56 by euhong           ###   ########.fr       */
+/*   Created: 2021/05/05 20:42:46 by euhong            #+#    #+#             */
+/*   Updated: 2021/05/10 11:12:20 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-int			is_type(char c)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
-	c == 'x' || c == 'X' || c == '%' || c == 'n')
-		return (0);
-	return (1);
+	while (n--)
+	{
+		if (*(unsigned char *)s1 != *(unsigned char *)s2)
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
+		else
+		{
+			s1++;
+			s2++;
+		}
+	}
+	return (0);
 }

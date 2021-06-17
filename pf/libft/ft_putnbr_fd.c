@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/16 15:06:56 by euhong           ###   ########.fr       */
+/*   Created: 2021/05/09 19:06:03 by euhong            #+#    #+#             */
+/*   Updated: 2021/05/10 11:12:55 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-int			is_type(char c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
-	c == 'x' || c == 'X' || c == '%' || c == 'n')
-		return (0);
-	return (1);
+	char	temp;
+
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n == 0)
+		write(fd, "0", 1);
+	else if (n < 0)
+	{
+		write(fd, "-", 1);
+		n *= -1;
+		ft_putnbr_fd(n, fd);
+	}
+	else
+	{
+		temp = n % 10 + '0';
+		if (n > 9)
+		{
+			n /= 10;
+			ft_putnbr_fd(n, fd);
+		}
+		write(fd, &temp, 1);
+	}
 }

@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/16 15:06:56 by euhong           ###   ########.fr       */
+/*   Created: 2021/05/05 22:55:43 by euhong            #+#    #+#             */
+/*   Updated: 2021/05/10 11:10:04 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-int			is_type(char c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
-	c == 'x' || c == 'X' || c == '%' || c == 'n')
-		return (0);
-	return (1);
+	char	*temp;
+
+	if (!(temp = (char *)malloc(sizeof(char) * (count * size))))
+		return (NULL);
+	ft_bzero((void *)temp, (count * size));
+	return (temp);
 }

@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/16 15:06:56 by euhong           ###   ########.fr       */
+/*   Created: 2021/05/06 21:49:33 by euhong            #+#    #+#             */
+/*   Updated: 2021/05/10 11:13:30 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-int			is_type(char c)
+char	*ft_strdup(const char *s1)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
-	c == 'x' || c == 'X' || c == '%' || c == 'n')
-		return (0);
-	return (1);
+	char	*temp;
+	size_t	len;
+
+	len = ft_strlen(s1);
+	if (!(temp = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	temp[len] = '\0';
+	if (len == 0)
+		return (temp);
+	while (--len)
+		temp[len] = s1[len];
+	temp[len] = s1[len];
+	return (temp);
 }
