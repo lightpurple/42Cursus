@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 19:35:13 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/17 22:20:45 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 13:11:11 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "./libft/libft.h"
+# include "libft.h"
 # define ONLY 0
 # define LEFT 1
 # define RIGHT 2

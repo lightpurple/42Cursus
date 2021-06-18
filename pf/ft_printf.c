@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:56:35 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/17 15:25:13 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 13:51:57 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ int		treat_format(va_list ap, char *str)
 			if (is_type(*str))
 				return (len);
 			info.type = *str;
+			if (info.star[0] || info.star[1])
+				if (treat_star(ap, &info)
+					return (len);
 			len += print_info(ap, info);
 		}
 		else

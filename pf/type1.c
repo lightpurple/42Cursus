@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:57:14 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/17 15:27:22 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 15:19:56 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,27 @@ int	print_id(va_list	ap, t_info info)
 
 int	print_c(va_list ap, t_info info)
 {
+	unsigned char uc;
 
+	uc = va_arg(ap, unsigned char);
+	if (info.width)
+	{
+		if (info.minus)
+			return (print_space(info.width, 1, &uc, LEFT));
+		else
+			return (print_space(info.width, 1, &uc, RIGHT));
+	}
+	else
+		write(1, &uc, 1);
+	return (1);
 }
 
 int	print_s(va_list ap, t_info info)
 {
+	char	*str;
 
+	str = va_arg(ap, char *);
+	return (write(1, str, ft_strlen(str)));
 }
 
 int	print_u(va_list ap, t_info info)
