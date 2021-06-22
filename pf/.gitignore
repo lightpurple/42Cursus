@@ -1,0 +1,12 @@
+pft/
+42TESTERS-PRINTF/
+pft_2019/
+tests451/
+printf_lover_v2/
+printf-tester/
+Test-42/
+ft_printf_test/
+**/*.o
+**/*.a
+test_result.txt
+test_all.sh

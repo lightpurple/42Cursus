@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:56:35 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/18 13:51:57 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:16:00 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ void	init_info(t_info *info)
 	info->zero = 0;
 	info->width = 0;
 	info->prec = -1;
-	info->prec_minus = 0;
 	info->star[0] = 0;
 	info->star[1] = 0;
 	info->type = 0;
 }
 
-int		print_info(va_list ap, t_info info)
+int		print_info(va_list *ap, t_info info)
 {
 	int	len;
 
@@ -42,10 +41,8 @@ int		print_info(va_list ap, t_info info)
 		len = print_x(ap, info);
 	if (info.type == 'X')
 		len = print_ux(ap, info);
-	if (info.type == 'n')
-		len = print_n(ap, info);
 	if (info.type == '%')
-		len = write(1, "%", 1);
+		len = print_perc(info);
 	return (len);
 }
 
@@ -53,14 +50,9 @@ int		set_info(t_info *info, char c)
 {
 	if (c == '-' && info->prec == -1 && info->width == 0)
 		info->minus = 1;
-	else if (c == '-' && info->prec != -1)
-	{
-		info->minus = 1;
-		info->prec_minus = 1;
-	}
-	else if (c == '0' && info->zero == 0)
+	else if (c == '0' && info->width == 0)
 		info->zero = 1;
-	else if (c == '.')
+	else if (c == '.' && info->prec == -1)
 		info->prec = 0;
 	else if (c >= '0' && c <= '9' && info->prec != -1)
 		info->prec = info->prec * 10 + c - '0';
@@ -75,7 +67,7 @@ int		set_info(t_info *info, char c)
 	return (1);
 }
 
-int		treat_format(va_list ap, char *str)
+int		treat_format(va_list *ap, char *str)
 {
 	t_info	info;
 	int		len;
@@ -86,14 +78,14 @@ int		treat_format(va_list ap, char *str)
 		if (*str == '%')
 		{
 			init_info(&info);
-			if (is_type(*++str))
-				while (!set_info(&info, *str) && *str)
-					str++;
+			str++;
+			while (set_info(&info, *str) && *str)
+				str++;
 			if (is_type(*str))
 				return (len);
 			info.type = *str;
 			if (info.star[0] || info.star[1])
-				if (treat_star(ap, &info)
+				if (treat_star(ap, &info))
 					return (len);
 			len += print_info(ap, info);
 		}
@@ -110,7 +102,7 @@ int		ft_printf(const char *str, ...)
 	int		len;
 
 	va_start(ap, str);
-	len = treat_format(ap, (char *)str);
+	len = treat_format(&ap, (char *)str);
 	va_end(ap);
 	return (len);
 }
