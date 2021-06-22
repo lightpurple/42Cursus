@@ -2,7 +2,7 @@
 
 int	print_space(int width, int s_len, char *num, int flag)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (flag == ONLY)
@@ -31,7 +31,7 @@ int	print_space(int width, int s_len, char *num, int flag)
 
 int	print_zero(int width, int s_len, char *num)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (num[0] == '-')
@@ -103,9 +103,9 @@ int	print_ux(va_list *ap, t_info info)
 	return (len);
 }
 
-int		print_perc(t_info info)
+int	print_perc(t_info info)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (info.minus)

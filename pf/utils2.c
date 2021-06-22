@@ -6,15 +6,15 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 19:51:17 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/22 22:14:21 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/23 01:59:54 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strlen(char *str)
+int			ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -54,7 +54,7 @@ static int	cnt_unum(unsigned int n)
 	return (cnt);
 }
 
-char		*ft_itoa(int	n, int	out)
+char		*ft_itoa(int n, int out)
 {
 	char	*num;
 	int		len;
@@ -80,7 +80,7 @@ char		*ft_itoa(int	n, int	out)
 	return (num);
 }
 
-char		*ft_utoa(unsigned int	n, int out)
+char		*ft_utoa(unsigned int n, int out)
 {
 	char	*num;
 	int		len;

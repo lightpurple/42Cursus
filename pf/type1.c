@@ -6,13 +6,13 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:57:14 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/22 22:12:44 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/23 01:59:26 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_id(va_list	*ap, t_info info)
+int	print_id(va_list *ap, t_info info)
 {
 	char	*num;
 	int		len;
@@ -37,13 +37,13 @@ int	print_id(va_list	*ap, t_info info)
 	}
 	else
 		len = print_space(info.width, ft_strlen(num), num, LEFT);
-	free (num);
+	free(num);
 	return (len);
 }
 
 int	print_c(va_list *ap, t_info info)
 {
-	unsigned char uc;
+	unsigned char	uc;
 
 	uc = va_arg(*ap, int);
 	if (info.width)
@@ -108,7 +108,7 @@ int	print_u(va_list *ap, t_info info)
 	}
 	else
 		len = print_space(info.width, ft_strlen(num), num, LEFT);
-	free (num);
+	free(num);
 	return (len);
 }
 

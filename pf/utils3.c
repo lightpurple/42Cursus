@@ -6,13 +6,13 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:29:36 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/22 20:53:44 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/23 02:00:00 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	setting_p(char (*str)[15], unsigned long	p, t_info info)
+void	setting_p(char (*str)[15], unsigned long p, t_info info)
 {
 	unsigned long	tmp;
 	int				i;
