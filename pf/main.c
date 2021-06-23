@@ -2,5 +2,5 @@
 
 int main()
 {
-	ft_printf("%5d", 65);
+	ft_printf("%32s", "abc");
 }

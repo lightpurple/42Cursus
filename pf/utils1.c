@@ -6,19 +6,11 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/23 01:59:48 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/23 15:31:18 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		is_type(char c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
-		c == 'x' || c == 'X' || c == '%')
-		return (0);
-	return (1);
-}
 
 int		treat_star(va_list *ap, t_info *info)
 {
@@ -44,28 +36,19 @@ int		treat_star(va_list *ap, t_info *info)
 	return (0);
 }
 
-char	*ft_xtoa(int num)
+int		cnt_hex(unsigned int num)
 {
-	int		i;
-	int		tmp;
-	char	*result;
+	int i;
 
 	i = 0;
-	tmp = num;
-	while (tmp > 0)
-	{
-		tmp /= 16;
-		i++;
-	}
-	if (!(result = (char *)malloc(sizeof(char) * (i + 1))))
-		return (0);
-	result[i--] = '\0';
+	if (!num)
+		return (1);
 	while (num > 0)
 	{
-		result[i--] = hex_num(num % 16);
 		num /= 16;
+		i++;
 	}
-	return (result);
+	return (i);
 }
 
 char	hex_num(int num)
@@ -75,6 +58,29 @@ char	hex_num(int num)
 	else
 		num += 48;
 	return (num);
+}
+
+char	*ft_xtoa(unsigned int num, int out)
+{
+	int				i;
+	unsigned int	tmp;
+	char			*result;
+
+	i = (num != 0) ? 0 : 1;
+	tmp = num;
+	i += cnt_hex(num);
+	i = out != 0 ? i : 0;
+	if (!(result = (char *)malloc(sizeof(char) * (i + 1))))
+		return (0);
+	if (tmp == 0 && out != 0)
+		result[0] = '0';
+	result[i--] = '\0';
+	while (tmp > 0)
+	{
+		result[i--] = hex_num(tmp % 16);
+		tmp /= 16;
+	}
+	return (result);
 }
 
 void	change_up(char **num)
