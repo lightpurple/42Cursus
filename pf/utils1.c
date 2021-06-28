@@ -6,33 +6,35 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/23 15:31:18 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/28 16:05:33 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	reverse_int(t_info *info)
+{
+	info->minus = 1;
+	info->width *= -1;
+}
+
 int		treat_star(va_list *ap, t_info *info)
 {
-	if ((info->star[0] || info->star[1]) && (info->prec || info->width))
+	if ((info->star[0] && info->width) || (info->prec > 0 && info->star[1]))
 		return (1);
 	if (info->star[0] && info->star[1])
 	{
 		if ((info->width = va_arg(*ap, int)) < 0)
-			return (1);
-		if ((info->prec = va_arg(*ap, int)) < 0)
-			return (1);
+			reverse_int(info);
+		info->prec = va_arg(*ap, int);
 	}
 	else if (info->star[0])
 	{
 		if ((info->width = va_arg(*ap, int)) < 0)
-			return (1);
+			reverse_int(info);
 	}
 	else if (info->star[1])
-	{
-		if ((info->prec = va_arg(*ap, int)) < 0)
-			info->prec = -1;
-	}
+		info->prec = va_arg(*ap, int);
 	return (0);
 }
 

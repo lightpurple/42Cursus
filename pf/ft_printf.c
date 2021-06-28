@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:56:35 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/23 01:59:09 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/28 19:53:09 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		set_info(t_info *info, char c)
 {
 	if (c == '-' && info->prec == -1 && info->width == 0)
 		info->minus = 1;
-	else if (c == '0' && info->width == 0)
+	else if (c == '0' && info->width == 0 && info->prec == -1)
 		info->zero = 1;
 	else if (c == '.' && info->prec == -1)
 		info->prec = 0;

@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 19:35:13 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/23 15:48:01 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/28 21:25:50 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				print_x(va_list *ap, t_info info);
 int				print_ux(va_list *ap, t_info info);
 int				print_n(va_list *ap, t_info info);
 int				print_space(int width, int s_len, char *num, int flag);
-int				print_zero(int width, int s_len, char *num, int flag);
+int				print_zero(int width, int s_len, char *num);
 int				print_perc(t_info info);
 int				ft_strlen(char *str);
 char			*ft_itoa(int n, int out);
@@ -50,6 +50,8 @@ void			change_up(char **num);
 char			*ft_xtoa(unsigned int num, int out);
 char			hex_num(int num);
 int				treat_star(va_list *ap, t_info *info);
-void			setting_p(char (*str)[15], unsigned long p, t_info info);
+void			setting_p(char **str, unsigned long p, t_info info);
+char			*ft_strdup(char *s1);
+
 
 #endif
