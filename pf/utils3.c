@@ -6,43 +6,84 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:29:36 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/28 20:33:14 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/30 01:45:13 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	setting_p(char **str, unsigned long p, t_info info)
+char	*ft_xtoa(unsigned int num)
 {
-	unsigned long	tmp;
-	int				i;
+	int		i;
+	char	*result;
 
-	tmp = p;
-	i = 3;
-	while ((tmp /= 16) > 0)
-		i++;
-	(*str)[i--] = '\0';
-	(*str)[0] = '0';
-	(*str)[1] = 'x';
-	(*str)[2] = '0';
-	if (info.prec != -1 && p == 0)
+	i = 0;
+	i += cnt_hex(num);
+	if (!(result = (char *)malloc(sizeof(char) * (i + 1))))
+		return (0);
+	if (num == 0)
+		result[0] = '0';
+	result[i--] = '\0';
+	while (num > 0)
 	{
-		(*str)[2] = '\0';
-		return ;
+		result[i--] = hex_num(num % 16);
+		num /= 16;
 	}
-	while (p)
-	{
-		(*str)[i--] = hex_num(p % 16);
-		p /= 16;
-	}
+	return (result);
 }
 
-int		is_type(char c)
+char	*ft_itoa(int n)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
-		c == 'x' || c == 'X' || c == '%')
-		return (0);
-	return (1);
+	char	*num;
+	int		len;
+	int		sign;
+
+	if (n < 0)
+		sign = -1;
+	else
+		sign = 1;
+	len = cnt_num(n);
+	if (!(num = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	num[len--] = '\0';
+	if (n == 0)
+		num[len] = '0';
+	while (n != 0)
+	{
+		num[len--] = sign * (n % 10) + '0';
+		n /= 10;
+	}
+	if (sign < 0)
+		num[0] = '-';
+	return (num);
+}
+
+char	*ft_utoa(unsigned int n)
+{
+	char	*num;
+	int		len;
+
+	len = cnt_unum(n);
+	if (!(num = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	num[len--] = '\0';
+	if (n == 0)
+		num[len] = '0';
+	while (n != 0)
+	{
+		num[len--] = (n % 10) + '0';
+		n /= 10;
+	}
+	return (num);
+}
+int		ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 char	*ft_strdup(char *s1)

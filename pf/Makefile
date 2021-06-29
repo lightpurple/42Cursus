@@ -6,7 +6,7 @@
 #    By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 18:52:59 by euhong            #+#    #+#              #
-#    Updated: 2021/06/22 20:10:55 by euhong           ###   ########.fr        #
+#    Updated: 2021/06/30 01:40:34 by euhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 ARFLAGS = -rcs
 
-FILE = ft_printf utils1 utils2 utils3 type1 type2
+FILE = ft_printf utils1 utils2 utils3 utils4 type1 type2
 SRCS = $(addsuffix .c, $(FILE))
 OBJS = $(SRCS:.c=.o)
 

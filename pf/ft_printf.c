@@ -6,47 +6,13 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:56:35 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/28 19:53:09 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/30 01:44:36 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	init_info(t_info *info)
-{
-	info->minus = 0;
-	info->zero = 0;
-	info->width = 0;
-	info->prec = -1;
-	info->star[0] = 0;
-	info->star[1] = 0;
-	info->type = 0;
-}
-
-int		print_info(va_list *ap, t_info info)
-{
-	int	len;
-
-	if (info.type == 'i' || info.type == 'd')
-		len = print_id(ap, info);
-	if (info.type == 'c')
-		len = print_c(ap, info);
-	if (info.type == 's')
-		len = print_s(ap, info);
-	if (info.type == 'u')
-		len = print_u(ap, info);
-	if (info.type == 'p')
-		len = print_p(ap, info);
-	if (info.type == 'x')
-		len = print_x(ap, info);
-	if (info.type == 'X')
-		len = print_ux(ap, info);
-	if (info.type == '%')
-		len = print_perc(info);
-	return (len);
-}
-
-int		set_info(t_info *info, char c)
+int	set_info(t_info *info, char c)
 {
 	if (c == '-' && info->prec == -1 && info->width == 0)
 		info->minus = 1;
@@ -67,7 +33,7 @@ int		set_info(t_info *info, char c)
 	return (1);
 }
 
-int		treat_format(va_list *ap, char *str)
+int	treat_format(va_list *ap, char *str)
 {
 	t_info	info;
 	int		len;
@@ -96,7 +62,7 @@ int		treat_format(va_list *ap, char *str)
 	return (len);
 }
 
-int		ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		len;

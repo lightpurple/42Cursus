@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:41:52 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/28 16:05:33 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/30 01:44:56 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,59 +38,44 @@ int		treat_star(va_list *ap, t_info *info)
 	return (0);
 }
 
-int		cnt_hex(unsigned int num)
+int		is_type(char c)
 {
-	int i;
-
-	i = 0;
-	if (!num)
-		return (1);
-	while (num > 0)
-	{
-		num /= 16;
-		i++;
-	}
-	return (i);
-}
-
-char	hex_num(int num)
-{
-	if (num >= 10)
-		num += 87;
-	else
-		num += 48;
-	return (num);
-}
-
-char	*ft_xtoa(unsigned int num, int out)
-{
-	int				i;
-	unsigned int	tmp;
-	char			*result;
-
-	i = (num != 0) ? 0 : 1;
-	tmp = num;
-	i += cnt_hex(num);
-	i = out != 0 ? i : 0;
-	if (!(result = (char *)malloc(sizeof(char) * (i + 1))))
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||
+		c == 'x' || c == 'X' || c == '%')
 		return (0);
-	if (tmp == 0 && out != 0)
-		result[0] = '0';
-	result[i--] = '\0';
-	while (tmp > 0)
-	{
-		result[i--] = hex_num(tmp % 16);
-		tmp /= 16;
-	}
-	return (result);
+	return (1);
 }
 
-void	change_up(char **num)
+void	init_info(t_info *info)
 {
-	int	i;
+	info->minus = 0;
+	info->zero = 0;
+	info->width = 0;
+	info->prec = -1;
+	info->star[0] = 0;
+	info->star[1] = 0;
+	info->type = 0;
+}
 
-	i = ft_strlen(*num);
-	while (i-- >= 0)
-		if ((*num)[i] >= 'a' && (*num)[i] <= 'z')
-			(*num)[i] -= 32;
+int		print_info(va_list *ap, t_info info)
+{
+	int	len;
+
+	if (info.type == 'i' || info.type == 'd')
+		len = print_id(ap, info);
+	if (info.type == 'c')
+		len = print_c(ap, info);
+	if (info.type == 's')
+		len = print_s(ap, info);
+	if (info.type == 'u')
+		len = print_u(ap, info);
+	if (info.type == 'p')
+		len = print_p(ap, info);
+	if (info.type == 'x')
+		len = print_x(ap, info);
+	if (info.type == 'X')
+		len = print_ux(ap, info);
+	if (info.type == '%')
+		len = print_perc(info);
+	return (len);
 }

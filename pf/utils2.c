@@ -6,23 +6,28 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 19:51:17 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/23 01:59:54 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/30 01:45:03 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_strlen(char *str)
+int		cnt_hex(unsigned int num)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (!num)
+		return (1);
+	while (num > 0)
+	{
+		num /= 16;
 		i++;
+	}
 	return (i);
 }
 
-static int	cnt_num(int n)
+int		cnt_num(int n)
 {
 	int	cnt;
 
@@ -39,7 +44,7 @@ static int	cnt_num(int n)
 	return (cnt);
 }
 
-static int	cnt_unum(unsigned int n)
+int		cnt_unum(unsigned int n)
 {
 	int	cnt;
 
@@ -54,47 +59,21 @@ static int	cnt_unum(unsigned int n)
 	return (cnt);
 }
 
-char		*ft_itoa(int n, int out)
+char	hex_num(int num)
 {
-	char	*num;
-	int		len;
-	int		sign;
-
-	if (n < 0)
-		sign = -1;
+	if (num >= 10)
+		num += 87;
 	else
-		sign = 1;
-	len = out == 0 ? 0 : cnt_num(n);
-	if (!(num = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	num[len--] = '\0';
-	if (n == 0 && out != 0)
-		num[len] = '0';
-	while (n != 0)
-	{
-		num[len--] = sign * (n % 10) + '0';
-		n /= 10;
-	}
-	if (sign < 0)
-		num[0] = '-';
+		num += 48;
 	return (num);
 }
 
-char		*ft_utoa(unsigned int n, int out)
+void	change_up(char **num)
 {
-	char	*num;
-	int		len;
+	int	i;
 
-	len = out == 0 ? 0 : cnt_unum(n);
-	if (!(num = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	num[len--] = '\0';
-	if (n == 0 && out != 0)
-		num[len] = '0';
-	while (n != 0)
-	{
-		num[len--] = (n % 10) + '0';
-		n /= 10;
-	}
-	return (num);
+	i = ft_strlen(*num);
+	while (i-- >= 0)
+		if ((*num)[i] >= 'a' && (*num)[i] <= 'z')
+			(*num)[i] -= 32;
 }
