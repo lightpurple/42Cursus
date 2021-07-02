@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:29:36 by euhong            #+#    #+#             */
-/*   Updated: 2021/06/30 01:45:13 by euhong           ###   ########.fr       */
+/*   Updated: 2021/06/30 12:52:01 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char	*ft_utoa(unsigned int n)
 	}
 	return (num);
 }
+
 int		ft_strlen(char *str)
 {
 	int	i;
