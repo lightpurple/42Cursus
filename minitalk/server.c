@@ -6,72 +6,63 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 22:14:50 by euhong            #+#    #+#             */
-/*   Updated: 2021/07/06 22:15:05 by euhong           ###   ########.fr       */
+/*   Updated: 2021/07/12 11:49:38 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-static int	cnt_num(int n)
+void	my_handler(int signum)
 {
-	int	cnt;
+	static unsigned char	num;
+	static int				i;
 
-	cnt = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-		cnt++;
-	while (n != 0)
-	{
-		n /= 10;
-		cnt++;
-	}
-	return (cnt);
-}
-
-char		*ft_itoa(int n)
-{
-	char	*num;
-	int		len;
-	int		sign;
-
-	if (n < 0)
-		sign = -1;
-	else
-		sign = 1;
-	len = cnt_num(n);
-	if (!(num = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	num[len--] = '\0';
-	if (n == 0)
-	{
-		num[len] = '0';
-		return (num);
-	}
-	while (n != 0)
-	{
-		num[len--] = sign * (n % 10) + '0';
-		n /= 10;
-	}
-	if (sign < 0)
-		num[0] = '-';
-	return (num);
-}
-
-int ft_strlen(char *str)
-{
-	int i;
-
+	num = 0;
 	i = 0;
-	while (str[i])
+	if (signum == SIGUSR1 && i != 8)
+	{
+		num |= (1 << i);
 		i++;
-	return (i);
+	}
+	else if (signum == SIGUSR2 && i != 8)
+	{
+		num |= (0 << i);
+		i++;
+	}
+	if (i == 8)
+	{
+		if (num == 0)
+			write(1, "\n", 1);
+		else
+			write(1, &num, 1);
+		i = 0;
+		num = 0;
+	}
 }
 
-int main()
+int		main(int arc, char **arv)
 {
-	int a = getpid();
-	char *kk = ft_itoa(a);
-	int len = ft_strlen(kk);
-	write(1, kk, len);
+	int		pid;
+	char	*str_pid;
+
+	(void)arv;
+	if (arc != 1)
+	{
+		put_str("The Server no need any argument!\n");
+		exit(0);
+	}
+	pid = getpid();
+	str_pid = ft_itoa(pid);
+	if (str_pid == NULL)
+		return (1);
+	put_str("Server PID:");
+	put_str(str_pid);
+	put_str("\n");
+	signal(SIGUSR1, my_handler);
+	signal(SIGUSR2, my_handler);
+	while (1)
+	{
+		pause();
+	}
+	return (0);
 }
