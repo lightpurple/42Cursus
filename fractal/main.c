@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:06:54 by euhong            #+#    #+#             */
-/*   Updated: 2021/07/02 18:16:26 by euhong           ###   ########.fr       */
+/*   Updated: 2021/07/12 12:05:23 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		verify_agv(char *agv)
 	return (TRUE);
 }
 
-int	main(int agc, char **agv)
+int		main(int agc, char **agv)
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -49,8 +49,8 @@ int	main(int agc, char **agv)
 	if (!mlx || !mlx_win)
 		exit(FALSE);
 	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
-			&img.line_length, &img.endian);
+	img.addr = mlx_get_data_addr(
+		img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
