@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 15:28:10 by euhong            #+#    #+#             */
-/*   Updated: 2021/07/12 11:49:59 by euhong           ###   ########.fr       */
+/*   Updated: 2021/08/26 16:54:58 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ static int	cnt_num(int n)
 	return (cnt);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*num;
 	int		len;
 
 	len = cnt_num(n);
-	if (!(num = (char *)malloc(sizeof(char) * (len + 1))))
+	num = (char *)malloc(sizeof(char) * (len + 1));
+	if (!num)
 		return (NULL);
 	num[len--] = '\0';
 	if (n == 0)
@@ -49,7 +50,7 @@ char		*ft_itoa(int n)
 	return (num);
 }
 
-int			ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -59,7 +60,7 @@ int			ft_strlen(char *str)
 	return (i);
 }
 
-int			ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int	res;
 	int	i;

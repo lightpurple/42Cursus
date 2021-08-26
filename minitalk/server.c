@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 22:14:50 by euhong            #+#    #+#             */
-/*   Updated: 2021/07/12 11:49:38 by euhong           ###   ########.fr       */
+/*   Updated: 2021/08/26 16:55:41 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	my_handler(int signum)
 {
-	static unsigned char	num;
-	static int				i;
+	static unsigned char	num = 0;
+	static int				i = 0;
 
-	num = 0;
-	i = 0;
 	if (signum == SIGUSR1 && i != 8)
 	{
 		num |= (1 << i);
@@ -40,7 +38,7 @@ void	my_handler(int signum)
 	}
 }
 
-int		main(int arc, char **arv)
+int	main(int arc, char **arv)
 {
 	int		pid;
 	char	*str_pid;

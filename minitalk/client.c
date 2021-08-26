@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 17:35:13 by euhong            #+#    #+#             */
-/*   Updated: 2021/07/12 11:49:27 by euhong           ###   ########.fr       */
+/*   Updated: 2021/08/26 16:55:28 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	check_error(char *pid, char *str)
 	}
 }
 
-int		main(int arc, char **arv)
+int	main(int arc, char **arv)
 {
 	int	pid;
 
