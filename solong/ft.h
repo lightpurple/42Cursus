@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:19:23 by euhong            #+#    #+#             */
-/*   Updated: 2022/01/24 22:21:57 by euhong           ###   ########.fr       */
+/*   Updated: 2022/01/27 16:45:32 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define WIDTH 700
-#define HEIGHT 500
+#define SIZE 40
 
 #define KEY_W 13
 #define KEY_A 0
@@ -39,6 +38,8 @@ typedef struct s_loc
 typedef struct s_map
 {
 	char **map;
+	int width;
+	int height;
 } t_map;
 
 typedef struct s_data
@@ -49,3 +50,6 @@ typedef struct s_data
 	int line_length;
 	int endian;
 } t_data;
+
+void map_parsing(char *file, t_map *map);
+void mlx_start(t_map map);

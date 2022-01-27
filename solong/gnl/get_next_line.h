@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:01:43 by euhong            #+#    #+#             */
-/*   Updated: 2022/01/24 22:11:53 by euhong           ###   ########.fr       */
+/*   Updated: 2022/01/27 12:12:53 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 int get_next_line(int fd, char **line);
 int ft_strlen(char *str);
 int ft_find_newline(char *str);
+char *ft_str_append(char *str, char *buf, int b_len);
 char *ft_strdup(char *s1);
 char *ft_strncpy(char *dst, char *src, int loc);
 char *ft_strncat(char *dst, char *src, int len);
