@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:19:23 by euhong            #+#    #+#             */
-/*   Updated: 2022/01/27 16:45:32 by euhong           ###   ########.fr       */
+/*   Updated: 2022/01/29 22:37:45 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 #include <unistd.h>
 
 #define SIZE 40
+
+#define X_EVENT_KEY_EXIT 17
 
 #define KEY_W 13
 #define KEY_A 0
