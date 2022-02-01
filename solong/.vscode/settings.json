@@ -3,6 +3,7 @@
     "mlx.h": "c",
     "ft.h": "c",
     "get_next_line.h": "c",
-    "unistd.h": "c"
+    "unistd.h": "c",
+    "ios": "c"
   }
 }

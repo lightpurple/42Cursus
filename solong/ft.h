@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:19:23 by euhong            #+#    #+#             */
-/*   Updated: 2022/01/29 22:37:45 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/01 23:00:58 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ typedef struct s_map
 
 typedef struct s_data
 {
+	void *mlx;
+	void *mlx_win;
 	void *img;
-	char *addr;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
+	t_map *map;
+	t_loc *loc;
 } t_data;
 
-void map_parsing(char *file, t_map *map);
-void mlx_start(t_map map);
+void map_parsing(char *file, t_map **map);
+void mlx_start(t_data *data);
