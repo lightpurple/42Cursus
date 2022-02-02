@@ -35,6 +35,8 @@ void mlx_start(t_data *data)
 	////////////
 	int i = 0;
 	int j;
+	int *width;
+	int *height;
 
 	printf("%d %d", data->map->width, data->map->height);
 	while (i < data->map->height)
@@ -42,8 +44,8 @@ void mlx_start(t_data *data)
 		j = 0;
 		while (j < data->map->width)
 		{
-			data->img =
-				mlx_xpm_file_to_image(data->mlx, "./image/young.xpm", 0, 0);
+			data->img = mlx_xpm_file_to_image(
+				data->mlx, "./image/young.xpm", width, height);
 			mlx_put_image_to_window(
 				data->mlx, data->mlx_win, data->img, j * SIZE, i * SIZE);
 			// if (data->map->map[i][j] == '1')
