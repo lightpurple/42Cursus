@@ -28,59 +28,74 @@ int key_exit(int keycode)
 // 	}
 // }
 
-void mlx_start(t_data *data)
+t_img new_sprite(void *mlx, char *path)
 {
-	mlx_hook(data->mlx_win, 2, 0, key_press, 0);
-	mlx_hook(data->mlx_win, X_EVENT_KEY_EXIT, 0, key_exit, 0);
+	t_img img;
+
+	img.ptr = mlx_xpm_file_to_image(mlx, path, &img.x, &img.y);
+	return img;
+}
+
+void init_images(t_game *game)
+{
+	game->collect = new_sprite(game->mlx, "./image/coin/coin0.xpm");
+	game->wall = new_sprite(game->mlx, "./image/wall.xpm");
+	game->floor = new_sprite(game->mlx, "./image/floor.xpm");
+	game->portal = new_sprite(game->mlx, "./image/portal.xpm");
+	game->player.stay_loop0 = new_sprite(game->mlx, "./image/mush/mush0.xpm");
+	game->player.stay_loop1 = new_sprite(game->mlx, "./image/mush/mush1.xpm");
+	game->player.stay_loop2 = new_sprite(game->mlx, "./image/mush/mush2.xpm");
+	game->player.move_loop0 = new_sprite(game->mlx, "./image/mush_move/mosh_move0.xpm");
+	game->player.move_loop1 = new_sprite(game->mlx, "./image/mush_move/mosh_move1.xpm");
+	game->player.move_loop2 = new_sprite(game->mlx, "./image/mush_move/mosh_move2.xpm");
+	game->player.move_loop3 = new_sprite(game->mlx, "./image/mush_move/mosh_move3.xpm");
+}
+
+void draw_map(t_game *game, int x, int y)
+{
+	if (game->map.map[y][x] == 'E')
+	{
+		game->portal.x = x * 40;
+		game->portal.y = y * 40;
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->portal.ptr, game->portal.x, game->portal.y);
+	}
+	else if (game->map.map[y][x] == '1')
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall.ptr, (40 * x), (40 * y));
+	else if (game->map.map[y][x] == 'C')
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->collect.ptr, (40 * x), (40 * y));
+	else
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.ptr, (40 * x), (40 * y));
+}
+
+void map_maker(t_game *game)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (game->map.map[y])
+	{
+		x = 0;
+		while (game->map.map[y][x])
+		{
+			draw_map(game, x, y);
+			x++;
+		}
+		y++;
+	}
+}
+
+void mlx_start(t_game *game)
+{
+	mlx_hook(game->mlx_win, 2, 0, key_press, 0);
+	mlx_hook(game->mlx_win, X_EVENT_KEY_EXIT, 0, key_exit, 0);
 	////////////
 	int i = 0;
 	int j;
-	int *width;
-	int *height;
 
-	printf("%d %d", data->map->width, data->map->height);
-	while (i < data->map->height)
-	{
-		j = 0;
-		while (j < data->map->width)
-		{
-			data->img = mlx_xpm_file_to_image(
-				data->mlx, "./image/young.xpm", width, height);
-			mlx_put_image_to_window(
-				data->mlx, data->mlx_win, data->img, j * SIZE, i * SIZE);
-			// if (data->map->map[i][j] == '1')
-			// {
-			// 	data->img =
-			// 		mlx_xpm_file_to_image(data->mlx, "./image/young.xpm", 0, 0);
-			// 	mlx_put_image_to_window(
-			// 		data->mlx, data->mlx_win, data->img, j * SIZE, i * SIZE);
-			// }
-			// else if (data->map->map[i][j] == '0')
-			// {
-			// 	data->img =
-			// 		mlx_xpm_file_to_image(data->mlx, "./image/young.xpm", 0, 0);
-			// 	mlx_put_image_to_window(
-			// 		data->mlx, data->mlx_win, data->img, j * SIZE, i * SIZE);
-			// }
-			// else if (data->map->map[i][j] == 'P')
-			// {
-			// 	data->img = mlx_xpm_file_to_image(
-			// 		data->mlx, "./image/mush/myoung.xpm", 0, 0);
-			// 	mlx_put_image_to_window(
-			// 		data->mlx, data->mlx_win, data->img, j * SIZE, i * SIZE);
-			// }
-			// else
-			// {
-			// 	data->img = mlx_xpm_file_to_image(
-			// 		data->mlx, "./image/coin/cyoung.xpm", 0, 0);
-			// 	mlx_put_image_to_window(
-			// 		data->mlx, data->mlx_win, data->img, j * SIZE, i * SIZE);
-			// }
-			j++;
-		}
-		i++;
-	}
+	printf("%d %d", game->map.width, game->map.height);
+	map_maker(game);
 	//////////////
 	// mlx_loop_hook(mlx, stay_player, img->img);
-	mlx_loop(data->mlx);
+	mlx_loop(game->mlx);
 }

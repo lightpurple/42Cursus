@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:19:23 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/02 23:56:55 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/03 00:13:18 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,36 @@ typedef struct s_map
 	int height;
 } t_map;
 
-typedef struct s_data
+typedef struct s_img
+{
+	void *ptr;
+	int x;
+	int y;
+} t_img;
+
+typedef struct s_player
+{
+	t_img stay_loop0;
+	t_img stay_loop1;
+	t_img stay_loop2;
+	t_img move_loop0;
+	t_img move_loop1;
+	t_img move_loop2;
+	t_img move_loop3;
+} t_player;
+
+typedef struct s_game
 {
 	void *mlx;
 	void *mlx_win;
-	void *img;
-	t_map *map;
-	t_loc *loc;
-} t_data;
+	t_player player;
+	t_img wall;
+	t_img floor;
+	t_img portal;
+	t_img collect;
+	t_map map;
+	t_loc loc;
+} t_game;
 
 void map_parsing(char *file, t_map **map);
-void mlx_start(t_data *data);
+void mlx_start(t_game *game);
