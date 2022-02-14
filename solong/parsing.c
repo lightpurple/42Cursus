@@ -19,7 +19,7 @@ int counting_star(int fd, t_game *game)
 		if (temp[i++] == '\n')
 		{
 			if (game->map.width == 0)
-				game->map.width = i;
+				game->map.width = i - 1;
 			res++;
 		}
 	}

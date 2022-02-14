@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:57:12 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/14 16:52:24 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/14 17:36:04 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int err_chk(t_map map, int arc)
 	int y;
 	if (arc != 2)
 		return (1);
-	y = 0;
-	while (map.map[y++])
+	y = -1;
+	while (map.map[++y])
 	{
-		x = 0;
-		while (map.map[y][x++])
+		x = -1;
+		while (map.map[y][++x]);
 		if (x != map.width)
 			return (1);
 	}
@@ -40,7 +40,7 @@ int main(int arc, char **arv)
 	if (err_chk(game.map, arc))
 	{
 		printf("%s", ERR_MSG);
+		exit(0);
 	}
-	// error check
 	mlx_start(&game);
 }
