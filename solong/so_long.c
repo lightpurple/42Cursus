@@ -6,17 +6,29 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:57:12 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/03 00:16:06 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/14 16:52:24 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void data_init(t_game *game)
+int err_chk(t_map map, int arc)
 {
-	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(
-		game->mlx, game->map.width * SIZE, game->map.height * SIZE, "so_long");
+	int x;
+	int y;
+	if (arc != 2)
+		return (1);
+	y = 0;
+	while (map.map[y++])
+	{
+		x = 0;
+		while (map.map[y][x++])
+		if (x != map.width)
+			return (1);
+	}
+	if (y != map.height)
+		return (1);
+	return (0);
 }
 
 int main(int arc, char **arv)
@@ -25,6 +37,10 @@ int main(int arc, char **arv)
 
 	map_parsing(arv[1], &game);
 	game_init(&game);
+	if (err_chk(game.map, arc))
+	{
+		printf("%s", ERR_MSG);
+	}
 	// error check
 	mlx_start(&game);
 }

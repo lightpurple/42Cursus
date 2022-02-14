@@ -6,14 +6,14 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:19:23 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/03 00:13:18 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/14 17:00:06 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_H
 #define FT_H
 
-#include "./gnl/get_next_line.h"
+#include "./get_next_line.h"
 #include "./minilibx_opengl_20191021/mlx.h"
 #include <fcntl.h>
 #include <stdio.h>
@@ -29,6 +29,7 @@
 #define KEY_S 1
 #define KEY_D 2
 #define KEY_ESC 53
+#define ERR_MSG "something wrong try again"
 #endif
 
 typedef struct s_loc
@@ -75,5 +76,6 @@ typedef struct s_game
 	t_loc loc;
 } t_game;
 
-void map_parsing(char *file, t_map **map);
+void map_parsing(char *file, t_game *game);
 void mlx_start(t_game *game);
+void game_init(t_game *game);

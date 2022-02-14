@@ -27,7 +27,7 @@ int counting_star(int fd, t_game *game)
 	return res;
 }
 
-void game_parsing(char *file, t_game *game)
+void map_parsing(char *file, t_game *game)
 {
 	int fd;
 	int count;
