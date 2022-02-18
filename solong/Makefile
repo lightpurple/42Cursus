@@ -6,13 +6,14 @@
 #    By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 18:52:59 by euhong            #+#    #+#              #
-#    Updated: 2022/02/14 16:59:53 by euhong           ###   ########.fr        #
+#    Updated: 2022/02/18 23:21:20 by euhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = solong
 
-SRCS = init.c mlx.c parsing.c so_long.c get_next_line.c get_next_line_utils.c
+SRCS = init.c mlx.c parsing.c so_long.c get_next_line.c get_next_line_utils.c\
+			draw.c util.c
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
