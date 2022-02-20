@@ -6,23 +6,25 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:57:12 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/14 17:36:04 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/20 15:37:45 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int err_chk(t_map map, int arc)
+int	err_chk(t_map map, int arc)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
+
 	if (arc != 2)
 		return (1);
 	y = -1;
 	while (map.map[++y])
 	{
 		x = -1;
-		while (map.map[y][++x]);
+		while (map.map[y][++x])
+			;
 		if (x != map.width)
 			return (1);
 	}
@@ -31,9 +33,9 @@ int err_chk(t_map map, int arc)
 	return (0);
 }
 
-int main(int arc, char **arv)
+int	main(int arc, char **arv)
 {
-	t_game game;
+	t_game	game;
 
 	map_parsing(arv[1], &game);
 	game_init(&game);

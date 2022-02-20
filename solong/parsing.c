@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/20 15:37:28 by euhong            #+#    #+#             */
+/*   Updated: 2022/02/20 15:37:31 by euhong           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft.h"
 
-int counting_star(int fd, t_game *game)
+int		counting_star(int fd, t_game *game)
 {
-	int size;
-	int res;
-	int i;
-	char *temp;
-	char buf[BUFFER_SIZE + 1];
+	int		size;
+	int		res;
+	int		i;
+	char	*temp;
+	char	buf[BUFFER_SIZE + 1];
 
 	i = 0;
 	res = 0;
@@ -24,15 +36,15 @@ int counting_star(int fd, t_game *game)
 		}
 	}
 	free(temp);
-	return res;
+	return (res);
 }
 
-void map_parsing(char *file, t_game *game)
+void	map_parsing(char *file, t_game *game)
 {
-	int fd;
-	int count;
-	int i;
-	char *str_tmp[1];
+	int		fd;
+	int		count;
+	int		i;
+	char	*str_tmp[1];
 
 	fd = open(file, O_RDONLY);
 	count = counting_star(fd, game);

@@ -1,33 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/20 15:37:13 by euhong            #+#    #+#             */
+/*   Updated: 2022/02/20 15:37:15 by euhong           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft.h"
 
-int key_press(int keycode)
+int		key_exit(t_game *game)
 {
-	if (keycode == KEY_ESC) // ESC 키를 누르면 프로그램 종료
-		exit(0);
-	return (0);
-}
-
-int key_exit(int keycode)
-{
-	keycode = 0;
+	printf("END\n");
+	mlx_destroy_window(game->mlx, game->mlx_win);
 	exit(0);
-	return (0);
 }
 
-int	loop_hook(t_game *game)
+int		loop_hook(t_game *game)
 {
-	draw_sprites(game, &(game->collect.img));
-	draw_sprites(game, &(game->enermy.img));
+	draw_sprites(game, &(game->collect));
+	draw_sprites(game, &(game->enermy));
 	draw_sprites(game, &(game->player.stay));
 	draw_portal(game);
 	return (1);
 }
 
-void mlx_start(t_game *game)
+void	move_key_hook(int keycode, t_game *game)
 {
-	mlx_hook(game->mlx_win, 2, 0, key_press, 0);
-	mlx_hook(game->mlx_win, X_EVENT_KEY_EXIT, 0, key_exit, 0);
-	////////////
-	mlx_loop_hook(game->mlx, &loop_hook, &game);
+	if (keycode == KEY_A || keycode == KEY_LEFT)
+	{
+	}
+	else if (keycode == KEY_W || keycode == KEY_UP)
+	{
+	}
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
+	{
+	}
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
+	{
+	}
+}
+
+int		key_hook(int keycode, t_game *game)
+{
+	if (game->move_status == NONE &&
+		(keycode == KEY_A || key_exit == KEY_D || key_exit == KEY_S ||
+			key_exit == KEY_W || key_exit == KEY_DOWN || key_exit == KEY_UP ||
+			key_exit == KEY_LEFT || key_exit == KEY_RIGHT))
+		move_key_hook(keycode, game);
+	if (keycode == KEY_ESC)
+		key_exit(game);
+	return (1);
+}
+
+void	mlx_start(t_game *game)
+{
+	mlx_hook(game->mlx_win, KEY_EXIT, 0, key_exit, &game);
+	mlx_key_hook(game->mlx_win, key_hook, &game);
+	mlx_loop_hook(game->mlx, loop_hook, &game);
 	mlx_loop(game->mlx);
 }
