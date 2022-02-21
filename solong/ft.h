@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:19:23 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/20 15:37:24 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/21 23:19:06 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void				game_init(t_game *game);
 void				init_map(t_game *game);
 void				put_img(t_game *game, void *img, int x, int y);
 void				draw_tile(t_game *game);
-void				draw_sprites(t_game *game, t_sprite **sprite);
+void				draw_sprites(t_game *game, t_sprite *sprite);
 void				draw_portal(t_game *game);
 void				link_sprites(t_sprite *collect, int x, int y);

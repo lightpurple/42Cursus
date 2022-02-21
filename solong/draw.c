@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:00 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/20 15:37:02 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/21 23:19:02 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_tile(t_game *game)
 	}
 }
 
-void	draw_sprites(t_game *game, t_sprite **sprite)
+void	draw_sprites(t_game *game, t_sprite *sprite)
 {
 	t_loc	*tmp;
 

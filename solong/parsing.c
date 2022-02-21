@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:28 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/20 15:37:31 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/21 22:57:19 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int		counting_star(int fd, t_game *game)
 
 void	map_parsing(char *file, t_game *game)
 {
+	int		i;
 	int		fd;
 	int		count;
-	int		i;
 	char	*str_tmp[1];
 
 	fd = open(file, O_RDONLY);

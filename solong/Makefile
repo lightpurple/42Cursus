@@ -6,7 +6,7 @@
 #    By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 18:52:59 by euhong            #+#    #+#              #
-#    Updated: 2022/02/18 23:21:20 by euhong           ###   ########.fr        #
+#    Updated: 2022/02/21 23:16:17 by euhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ $(NAME) : $(OBJS)
 
 clean :
 	$(RM) $(OBJS)
+	cd ./minilibx_opengl_20191021 && make clean
 
 fclean : clean
 	$(RM) $(NAME)

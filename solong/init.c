@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:07 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/20 15:37:09 by euhong           ###   ########.fr       */
+/*   Updated: 2022/02/21 23:20:13 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void	init_game(t_game *game)
 void	init_map(t_game *game)
 {
 	draw_tile(game);
-	draw_sprites(game, &(game->collect.img));
-	// draw_sprites(game, &(game->enermy.img));
+	draw_sprites(game, &(game->collect));
+	// draw_sprites(game, &(game->enermy));
 	draw_portal(game);
 }
 
