@@ -6,7 +6,7 @@
 #    By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 18:52:59 by euhong            #+#    #+#              #
-#    Updated: 2022/03/03 16:07:13 by euhong           ###   ########.fr        #
+#    Updated: 2022/03/03 23:06:05 by euhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,10 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	cd ${MLX_DIR} && make
-	$(CC) -o $(NAME) $(OBJS) -L $(MLX_DIR) -lmlx -framework OpenGL -framework Appkit
+	$(CC) -o $(NAME) $(OBJS) -L $(MLX_DIR) -lmlx -framework OpenGL -framework Appkit -fsanitize=address -g
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $?
+	$(CC) $(CFLAGS) -c $? -g
 
 clean :
 	$(RM) $(OBJS)

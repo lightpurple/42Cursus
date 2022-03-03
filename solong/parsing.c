@@ -6,17 +6,17 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:28 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/03 16:58:21 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/04 01:11:40 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int		counting_star(int fd, t_game *game)
+int	counting_star(int fd, t_game *game)
 {
-	int i;
-	int res;
-	char temp;
+	int		i;
+	int		res;
+	char	temp;
 
 	i = 0;
 	res = 0;

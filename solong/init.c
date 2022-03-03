@@ -6,19 +6,11 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:07 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/03 16:34:52 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/04 01:13:50 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-
-t_img	new_img(void *mlx, char *path)
-{
-	t_img	img;
-
-	img.ptr = mlx_xpm_file_to_image(mlx, path, &img.x, &img.y);
-	return (img);
-}
 
 void	init_images(t_game *game)
 {
@@ -32,12 +24,37 @@ void	init_images(t_game *game)
 void	init_mlx(t_game *game)
 {
 	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(
-		game->mlx, game->map.width * SIZE, game->map.height * SIZE, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx, game->map.width * SIZE,
+			game->map.height * SIZE, "so_long");
+}
+
+void	setting_unit(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (game->map.map[y])
+	{
+		x = 0;
+		while (game->map.map[y][x])
+		{
+			if (game->map.map[y][x] == 'C')
+				game->collect_cnt++;
+			if (game->map.map[y][x] == 'P')
+			{
+				game->player.x = x;
+				game->player.y = y;
+			}
+			x++;
+		}
+		y++;
+	}
 }
 
 void	init_map(t_game *game)
 {
+	setting_unit(game);
 	draw_tile(game);
 	draw_unit(game);
 }

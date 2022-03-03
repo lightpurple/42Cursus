@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:25:44 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/03 16:34:41 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/04 01:35:34 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_str_append(char *str, char *buf, int b_len)
 	s_len = 0;
 	if (str)
 		s_len = ft_strlen(str);
-	if (!(res = (char *)malloc(sizeof(char) * (s_len + b_len + 1))))
+	res = (char *)malloc(sizeof(char) * (s_len + b_len + 1));
+	if (!res)
 		return (NULL);
 	*res = '\0';
 	if (str)
@@ -31,18 +32,20 @@ char	*ft_str_append(char *str, char *buf, int b_len)
 	return (res);
 }
 
-int		ft_split_linefid(char **str, char **line, int loc)
+int	ft_split_linefid(char **str, char **line, int loc)
 {
 	char	*temp;
 
-	if (!(*line = (char *)malloc(sizeof(char) * (loc + 1))))
+	*line = (char *)malloc(sizeof(char) * (loc + 1));
+	if (!(*line))
 	{
 		free(*str);
 		return (-1);
 	}
 	(*line)[loc] = '\0';
 	*line = ft_strncpy(*line, *str, loc);
-	if (!(temp = ft_strdup(*str + loc + 1)))
+	temp = ft_strdup(*str + loc + 1);
+	if (!temp)
 	{
 		free(*str);
 		free(*line);
@@ -53,7 +56,7 @@ int		ft_split_linefid(char **str, char **line, int loc)
 	return (1);
 }
 
-int		ft_end_of_file(char **str, char **line, int size)
+int	ft_end_of_file(char **str, char **line, int size)
 {
 	int	loc;
 
@@ -65,33 +68,36 @@ int		ft_end_of_file(char **str, char **line, int size)
 	}
 	else if (*str)
 	{
-		if ((loc = ft_find_newline(*str)) != -1)
+		loc = ft_find_newline(*str);
+		if (loc != -1)
 			return (ft_split_linefid(str, line, loc));
 		*line = *str;
 		*str = NULL;
 	}
-	else if (!(*line = ft_strdup("")))
-		return (-1);
+	else
+		*line = ft_strdup("");
 	return (0);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	char	buf[BUFFER_SIZE + 1];
-	int		size;
-	int		loc;
+	char		buf[BUFFER_SIZE + 1];
+	int			size;
+	int			loc;
+	static char	*str[OPEN_MAX] = {0, };
 
-	static char *str[OPEN_MAX] = {
-		0,
-	};
 	if (fd < 0 || fd >= OPEN_MAX || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	while ((size = read(fd, buf, BUFFER_SIZE)) > 0)
+	size = read(fd, buf, BUFFER_SIZE);
+	while (size > 0)
 	{
-		if (!(str[fd] = ft_str_append(str[fd], buf, size)))
+		str[fd] = ft_str_append(str[fd], buf, size);
+		if (!str[fd])
 			return (-1);
-		if ((loc = ft_find_newline(str[fd])) != -1)
+		loc = ft_find_newline(str[fd]);
+		if (loc != -1)
 			return (ft_split_linefid(&str[fd], line, loc));
+		size = read(fd, buf, BUFFER_SIZE);
 	}
 	return (ft_end_of_file(&str[fd], line, size));
 }
