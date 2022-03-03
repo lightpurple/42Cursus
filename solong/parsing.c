@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:28 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/21 22:57:19 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/03 16:58:21 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,23 @@
 
 int		counting_star(int fd, t_game *game)
 {
-	int		size;
-	int		res;
-	int		i;
-	char	*temp;
-	char	buf[BUFFER_SIZE + 1];
+	int i;
+	int res;
+	char temp;
 
 	i = 0;
 	res = 0;
-	temp = NULL;
 	game->map.width = 0;
-	while ((size = read(fd, buf, BUFFER_SIZE)) > 0)
-		temp = ft_str_append(temp, buf, size);
-	while (temp[i] != EOF)
+	while (read(fd, &temp, 1))
 	{
-		if (temp[i++] == '\n')
+		i++;
+		if (temp == '\n')
 		{
 			if (game->map.width == 0)
 				game->map.width = i - 1;
 			res++;
 		}
 	}
-	free(temp);
 	return (res);
 }
 
@@ -49,6 +44,7 @@ void	map_parsing(char *file, t_game *game)
 	fd = open(file, O_RDONLY);
 	count = counting_star(fd, game);
 	game->map.map = (char **)malloc(sizeof(char *) * (count + 1));
+	close(fd);
 	fd = open(file, O_RDONLY);
 	game->map.map[count] = 0;
 	game->map.height = count;

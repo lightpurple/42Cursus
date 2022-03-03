@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:19:23 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/21 23:19:06 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/03 15:58:25 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,10 @@
 
 # define SIZE 40
 
-# define NONE 0
-# define MOVE 1
-
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
-# define KEY_UP 126
-# define KEY_LEFT 123
-# define KEY_DOWN 125
-# define KEY_RIGHT 124
 # define KEY_EXIT 17
 # define KEY_ESC 53
 # define ERR_MSG "something wrong try again"
@@ -53,39 +46,17 @@ typedef struct		s_img
 	struct s_img	*next;
 }					t_img;
 
-typedef struct		s_loc
-{
-	int				x;
-	int				y;
-	struct s_loc	*next;
-}					t_loc;
-
-typedef struct		s_sprite
-{
-	t_img			*img;
-	t_loc			*loc;
-}					t_sprite;
-
-typedef struct		s_player
-{
-	int				x;
-	int				y;
-	t_sprite		*stay;
-	t_sprite		*move;
-}					t_player;
-
 typedef struct		s_game
 {
 	void			*mlx;
 	void			*mlx_win;
-	int				move_cnt;
-	int				move_status;
-	t_player		player;
+	int				movement;
+	int				collect_cnt;
+	t_img		player;
 	t_img			wall;
 	t_img			floor;
 	t_img			portal;
-	t_sprite		collect;
-	t_sprite		enermy;
+	t_img		collect;
 	t_map			map;
 }					t_game;
 
@@ -95,6 +66,6 @@ void				game_init(t_game *game);
 void				init_map(t_game *game);
 void				put_img(t_game *game, void *img, int x, int y);
 void				draw_tile(t_game *game);
-void				draw_sprites(t_game *game, t_sprite *sprite);
-void				draw_portal(t_game *game);
-void				link_sprites(t_sprite *collect, int x, int y);
+void				draw_unit(t_game *game);
+void print_movement(int movement);
+void	put_img(t_game *game, void *img, int x, int y);

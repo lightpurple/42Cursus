@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:57:12 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/20 15:37:45 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/03 16:25:30 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ int	err_chk(t_map map, int arc)
 
 	if (arc != 2)
 		return (1);
-	y = -1;
-	while (map.map[++y])
+	y = 0;
+	while (map.map[y])
 	{
-		x = -1;
-		while (map.map[y][++x])
-			;
+		x = 0;
+		while (map.map[y][x])
+			x++;
 		if (x != map.width)
 			return (1);
+		y++;
 	}
 	if (y != map.height)
 		return (1);

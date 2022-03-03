@@ -6,17 +6,18 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:37 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/20 15:37:39 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/03 16:33:32 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	link_sprites(t_sprite *collect, int x, int y)
+void	put_img(t_game *game, void *img, int x, int y)
 {
-	collect->loc->x = x;
-	collect->loc->y = y;
-	collect->loc->next = (t_loc *)malloc(sizeof(t_loc));
-	collect->loc = collect->loc->next;
-	collect->loc->next = NULL;
+	mlx_put_image_to_window(game->mlx, game->mlx_win, img, SIZE * x, SIZE * y);
+}
+
+void	print_movement(int movement)
+{
+	printf("movement => %d", movement);
 }

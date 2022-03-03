@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:13 by euhong            #+#    #+#             */
-/*   Updated: 2022/02/21 23:26:24 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/03 17:03:45 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,43 @@
 int		key_exit(t_game *game)
 {
 	printf("END\n");
-	mlx_destroy_window(game->mlx, game->mlx_win);
+	(void)game;
 	exit(0);
-}
-
-int		loop_hook(t_game *game)
-{
-	draw_sprites(game, &(game->collect));
-	draw_sprites(game, &(game->enermy));
-	draw_sprites(game, game->player.stay);
-	draw_portal(game);
-	return (1);
 }
 
 void	move_player(t_game *game, int x, int y)
 {
 	if (game->map.map[game->player.y + y][game->player.x + x] == '1')
 		return ;
-	handle_player();
-}
+	game->movement++;
+	print_movement(game->movement);
+	if (!game->collect_cnt &&
+		game->map.map[game->player.y + y][game->player.x + x] == 'E')
+		key_exit(game);
+	if (game->map.map[game->player.y][game->player.x] != 'E')
+		game->map.map[game->player.y][game->player.x] = '0';
+	game->player.x += x;
+	game->player.y += y;
+	draw_unit(game);
+} // C로 움직일경우 segmentation fault
+// 나머지 bus error
 
 void	move_key_hook(int keycode, t_game *game)
 {
-	if (keycode == KEY_A || keycode == KEY_LEFT)
-	{
+	if (keycode == KEY_A)
 		move_player(game, -1, 0);
-	}
-	else if (keycode == KEY_W || keycode == KEY_UP)
-	{
+	else if (keycode == KEY_W)
 		move_player(game, 0, 1);
-	}
-	else if (keycode == KEY_S || keycode == KEY_DOWN)
-	{
+	else if (keycode == KEY_S)
 		move_player(game, 0, -1);
-	}
-	else if (keycode == KEY_D || keycode == KEY_RIGHT)
-	{
+	else if (keycode == KEY_D)
 		move_player(game, 1, 0);
-	}
 }
 
 int		key_hook(int keycode, t_game *game)
 {
-	if (game->move_status == NONE &&
-		(keycode == KEY_A || key_exit == KEY_D || key_exit == KEY_S ||
-			key_exit == KEY_W || key_exit == KEY_DOWN || key_exit == KEY_UP ||
-			key_exit == KEY_LEFT || key_exit == KEY_RIGHT))
+	if (keycode == KEY_A || keycode == KEY_D || keycode == KEY_S ||
+		keycode == KEY_W)
 		move_key_hook(keycode, game);
 	if (keycode == KEY_ESC)
 		key_exit(game);
@@ -69,8 +60,7 @@ int		key_hook(int keycode, t_game *game)
 
 void	mlx_start(t_game *game)
 {
-	mlx_hook(game->mlx_win, KEY_EXIT, 0, &key_exit, &game);
-	mlx_key_hook(game->mlx_win, &key_hook, &game);
-	mlx_loop_hook(game->mlx, &loop_hook, &game);
+	mlx_key_hook(game->mlx_win, key_hook, &game);
+	mlx_hook(game->mlx_win, KEY_EXIT, 0, key_exit, &game);
 	mlx_loop(game->mlx);
 }

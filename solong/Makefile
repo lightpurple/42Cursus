@@ -6,7 +6,7 @@
 #    By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 18:52:59 by euhong            #+#    #+#              #
-#    Updated: 2022/02/21 23:16:17 by euhong           ###   ########.fr        #
+#    Updated: 2022/03/03 16:07:13 by euhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ MLX_DIR = minilibx_opengl_20191021
 all : $(NAME)
 
 $(NAME) : $(OBJS)
+	cd ${MLX_DIR} && make
 	$(CC) -o $(NAME) $(OBJS) -L $(MLX_DIR) -lmlx -framework OpenGL -framework Appkit
 
 %.o : %.c
