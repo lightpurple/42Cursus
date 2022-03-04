@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:37:28 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/04 01:11:40 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/04 13:15:51 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	map_parsing(char *file, t_game *game)
 	char	*str_tmp[1];
 
 	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		wrong_exit();
 	count = counting_star(fd, game);
 	game->map.map = (char **)malloc(sizeof(char *) * (count + 1));
 	close(fd);

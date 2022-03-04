@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:19:23 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/04 01:14:16 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/04 13:30:17 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define SUCCESS 0
+# define FAIL 1
+
 # define SIZE 40
 
 # define KEY_W 13
@@ -29,7 +32,6 @@
 # define KEY_EXIT 17
 # define KEY_ESC 53
 # define ERR_MSG "something wrong try again"
-#endif
 
 typedef struct s_map
 {
@@ -71,3 +73,6 @@ void				print_movement(int movement);
 void				put_img(t_game *game, void *img, int x, int y);
 int					err_chk(t_map map, int arc);
 t_img				new_img(void *mlx, char *path);
+void				wrong_exit(void);
+
+#endif
