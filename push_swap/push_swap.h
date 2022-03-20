@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:24 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/19 21:37:25 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/20 20:33:48 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void r_rotate(t_llist **target);
 void	swap_both(t_llist **a, t_llist **b);
 void	rotate_both(t_llist **a, t_llist **b);
 void	r_rotate_both(t_llist **a, t_llist **b);
-void init_llist(t_llist **list, int length);
-void fill_llist(t_llist **list, char *src[]);
 void freest(t_llist **a, t_llist **b);
 void error_check(int arc, char *arv[]);
 void print(char *str, int fd);
 int			ft_atoi(char *str);
 int ft_strcmp(char *s1, char *s2);
+void init(t_llist **a, t_llist **b, int arc, char *arv[]);
+void quickSort(int *arr, int start, int end);
 
 #endif
