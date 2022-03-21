@@ -6,13 +6,13 @@
 #    By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/19 18:12:21 by euhong            #+#    #+#              #
-#    Updated: 2022/03/19 21:40:25 by euhong           ###   ########.fr        #
+#    Updated: 2022/03/21 17:48:18 by euhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRCS = init.c error.c util1.c str.c move.c move_both.c push_swap.c
+SRCS = init.c error.c util1.c str.c op.c op_both.c push_swap.c simple_sort.c
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc

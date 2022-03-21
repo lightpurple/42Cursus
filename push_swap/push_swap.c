@@ -6,11 +6,29 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:02 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/20 20:34:32 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/21 21:03:12 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort(t_llist **a, t_llist **b, int cnt)
+{
+
+}
+
+void	push_swap(t_llist **a, t_llist **b)
+{
+	int cnt;
+
+	cnt = cnt_list(*a);
+	if (check_sorted(*a, cnt));
+		return ;
+	if (cnt == 3 || cnt == 5)
+		simple_sort(a, b, cnt);
+	else
+		sort(a, b, cnt);
+}
 
 int main(int arc, char *arv[])
 {
@@ -20,9 +38,7 @@ int main(int arc, char *arv[])
 
 	error_check(arc, arv);
 	init(&a, &b, arc, arv);
-
-	// sort
-
+	push_swap(&a, &b);
 	freest(&a, &b);
 	// 절반 나눠서 a는 오름차순, b는 내림차순으로 정렬
 }
