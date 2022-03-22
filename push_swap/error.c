@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:06 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/19 21:37:07 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/22 17:15:43 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void not_int(char *arv[])
 		j = -1;
 		while (arv[i][++j])
 		{
-			if (j == 0 && arv[i][j] == '-' && (arv[i][j + 1] >= '1' && arv[i][j +1] <= '9'))
+			if ((j == 0 && arv[i][j] == '-' && (arv[i][j + 1] >= '1' && arv[i][j +1] <= '9')) ||
+			(arv[i][0] == '0' && arv[i][1] == 0))
 				continue;
 			if (arv[i][0] == '0' || arv[i][j] < '0' || arv[i][j] > '9')
 			{
@@ -51,7 +52,7 @@ void out_of_range(char *arv[])
 	i = 0;
 	while (arv[++i])
 	{
-		flag = ft_atoi(arv[i]);
+		ft_atoi(arv[i], &flag);
 		if (flag == -1)
 		{
 			print("Some arguments are bigger than an integer\n", 2);

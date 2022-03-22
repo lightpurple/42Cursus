@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:45:54 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/21 21:19:15 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/22 16:57:40 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void sort_5(t_llist **a, t_llist **b)
 			push(b, a, B);
 			pb++;
 		}
-		rotate(a, A);
+		else
+			rotate(a, A);
 	}
 	sort_3(a);
 	push(a, b, A);

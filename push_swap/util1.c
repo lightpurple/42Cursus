@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:29 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/21 17:32:26 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/22 22:56:36 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void freest(t_llist **a, t_llist **b)
 	}
 }
 
-int			ft_atoi(char *str)
+int			ft_atoi(char *str, int *flag)
 {
 	unsigned long	res;
 	int				sign;
@@ -49,16 +49,16 @@ int			ft_atoi(char *str)
 		res = (str[i] - '0') + (res * 10);
 		i++;
 		if (sign == 1 && res > INTMAX)
-			return (-1);
+			*flag = -1;
 		else if (sign == -1 && res > INTMIN)
-			return (0);
+			*flag = 0;
 	}
 	return ((int)res * sign);
 }
 
-void change(char *a, char *b)
+void change(int *a, int *b)
 {
-	char temp;
+	int temp;
 
 	temp = *a;
 	*a = *b;
@@ -69,7 +69,6 @@ void quickSort(int *arr, int start, int end)
 {
 	int i;
 	int j;
-	int temp;
 	int key;
 
 	if (start >= end)

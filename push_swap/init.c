@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:10 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/21 17:14:38 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/22 17:17:24 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ void init_llist(t_llist **list, int length)
 void fill_llist(t_llist **list, char *src[])
 {
 	int	i;
+	int trash;
 	t_llist *temp;
 
 	temp = (*list);
 	i = 1;
 	while (*list)
 	{
-		(*list)->element = ft_atoi((src[i++]));
+		(*list)->element = ft_atoi((src[i++]), &trash);
 		(*list) = (*list)->next;
 	}
 	(*list) = temp;

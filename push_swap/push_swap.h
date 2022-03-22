@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:24 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/21 23:53:53 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/22 22:56:40 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define A 0
 # define B 1
+# define AB 2
 
 typedef struct	s_llist {
 	int				element;
@@ -65,7 +66,7 @@ void init(t_llist **a, t_llist **b, int arc, char *arv[]);
 *** util1.c ***
 */
 void freest(t_llist **a, t_llist **b);
-int ft_atoi(char *str);
+int ft_atoi(char *str, int *flag);
 void quickSort(int *arr, int start, int end);
 int cnt_list(t_llist *list);
 

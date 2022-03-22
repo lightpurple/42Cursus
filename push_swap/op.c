@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:20 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/21 21:19:30 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/22 16:53:16 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ void swap(t_llist **target, int stack)
 	if (!(*target) || !(*target)->next)
 		return ;
 	temp = (*target);
-	temp->next = temp->next->next;
 	(*target) = (*target)->next;
+	temp->next = temp->next->next;
 	(*target)->next = temp;
-	op = stack == A ? "SA\n" : "SB\n";
-	print(op, 1);
+	if (stack != AB)
+	{
+		op = stack == A ? "sa\n" : "sb\n";
+		print(op, 1);
+	}
 }
 
 void push(t_llist **dst, t_llist **src, int stack)
@@ -35,10 +38,10 @@ void push(t_llist **dst, t_llist **src, int stack)
 	if ((*src) == NULL)
 		return ;
 	temp = (*src);
+	(*src) = (*src)->next;
 	temp->next = (*dst);
 	(*dst) = temp;
-	(*src) = (*src)->next;
-	op = stack == A ? "PA\n" : "PB\n";
+	op = stack == A ? "pa\n" : "pb\n";
 	print(op, 1);
 }
 
@@ -51,14 +54,17 @@ void rotate(t_llist **target, int stack)
 	if (!(*target) || !(*target)->next)
 		return ;
 	end = (*target);
-	end->next = NULL;
 	start = (*target)->next;
 	while ((*target)->next)
 		(*target) = (*target)->next;
+	end->next = NULL;
 	(*target)->next = end;
 	(*target) = start;
-	op = stack == A ? "RA\n" : "RB\n";
-	print(op, 1);
+	if (stack != AB)
+	{
+		op = stack == A ? "ra\n" : "rb\n";
+		print(op, 1);
+	}
 }
 
 void r_rotate(t_llist **target, int stack)
@@ -76,6 +82,9 @@ void r_rotate(t_llist **target, int stack)
 	start->next = second;
 	(*target)->next = NULL;
 	(*target) = start;
-	op = stack == A ? "RRA\n" : "RRB\n";
-	print(op, 1);
+	if (stack != AB)
+	{
+		op = stack == A ? "rra\n" : "rrb\n";
+		print(op, 1);
+	}
 }

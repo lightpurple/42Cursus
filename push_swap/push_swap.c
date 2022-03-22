@@ -6,35 +6,34 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:02 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/21 21:03:12 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/22 16:22:57 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_llist **a, t_llist **b, int cnt)
-{
+// void	sort(t_llist **a, t_llist **b, int cnt)
+// {
 
-}
+// }
 
 void	push_swap(t_llist **a, t_llist **b)
 {
 	int cnt;
 
 	cnt = cnt_list(*a);
-	if (check_sorted(*a, cnt));
+	if (!check_sorted(*a, cnt))
 		return ;
 	if (cnt == 3 || cnt == 5)
 		simple_sort(a, b, cnt);
-	else
-		sort(a, b, cnt);
+	// else
+	// 	sort(a, b, cnt);
 }
 
 int main(int arc, char *arv[])
 {
 	t_llist *a;
 	t_llist *b;
-	int	arr[arc];
 
 	error_check(arc, arv);
 	init(&a, &b, arc, arv);

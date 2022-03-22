@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:18 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/21 23:54:58 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/22 00:05:54 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void	swap_both(t_llist **a, t_llist **b)
 {
-	swap(a, A);
-	swap(b, B);
+	swap(a, AB);
+	swap(b, AB);
+	print("ss\n", 1);
 }
 
 void	rotate_both(t_llist **a, t_llist **b)
 {
-	rotate(a, A);
-	rotate(b, B);
+	rotate(a, AB);
+	rotate(b, AB);
+	print("rr\n", 1);
 }
 
 void	r_rotate_both(t_llist **a, t_llist **b)
 {
-	r_rotate(a, A);
-	r_rotate(b, B);
+	r_rotate(a, AB);
+	r_rotate(b, AB);
+	print("rrr\n", 1);
 }
