@@ -6,15 +6,15 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:10 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/22 17:17:24 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/23 16:31:42 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void init_llist(t_llist **list, int length)
+void	init_llist(t_llist **list, int length)
 {
-	t_llist *temp;
+	t_llist	*temp;
 
 	(*list) = (t_llist *)malloc(sizeof(t_llist));
 	temp = (*list);
@@ -27,23 +27,22 @@ void init_llist(t_llist **list, int length)
 	(*list) = temp;
 }
 
-void fill_llist(t_llist **list, char *src[])
+void	fill_llist(t_llist **list, char *src[])
 {
-	int	i;
-	int trash;
-	t_llist *temp;
+	int		i;
+	t_llist	*temp;
 
 	temp = (*list);
 	i = 1;
 	while (*list)
 	{
-		(*list)->element = ft_atoi((src[i++]), &trash);
+		(*list)->element = ft_atoi((src[i++]), NULL);
 		(*list) = (*list)->next;
 	}
 	(*list) = temp;
 }
 
-void init(t_llist **a, t_llist **b, int arc, char *arv[])
+void	init(t_llist **a, t_llist **b, int arc, char *arv[])
 {
 	init_llist(a, arc - 1);
 	init_llist(b, 1);

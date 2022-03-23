@@ -6,15 +6,15 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:20 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/22 16:53:16 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/23 00:17:55 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void swap(t_llist **target, int stack)
+void	swap(t_llist **target, int stack)
 {
-	char *op;
+	char	*op;
 	t_llist	*temp;
 
 	if (!(*target) || !(*target)->next)
@@ -25,15 +25,18 @@ void swap(t_llist **target, int stack)
 	(*target)->next = temp;
 	if (stack != AB)
 	{
-		op = stack == A ? "sa\n" : "sb\n";
+		if (stack == A)
+			op = "sa\n";
+		else
+			op = "sb\n";
 		print(op, 1);
 	}
 }
 
-void push(t_llist **dst, t_llist **src, int stack)
+void	push(t_llist **dst, t_llist **src, int stack)
 {
-	char *op;
-	t_llist *temp;
+	char	*op;
+	t_llist	*temp;
 
 	if ((*src) == NULL)
 		return ;
@@ -41,15 +44,18 @@ void push(t_llist **dst, t_llist **src, int stack)
 	(*src) = (*src)->next;
 	temp->next = (*dst);
 	(*dst) = temp;
-	op = stack == A ? "pa\n" : "pb\n";
+	if (stack == A)
+		op = "pa\n";
+	else
+		op = "pb\n";
 	print(op, 1);
 }
 
-void rotate(t_llist **target, int stack)
+void	rotate(t_llist **target, int stack)
 {
-	char *op;
-	t_llist *start;
-	t_llist *end;
+	char	*op;
+	t_llist	*start;
+	t_llist	*end;
 
 	if (!(*target) || !(*target)->next)
 		return ;
@@ -62,16 +68,19 @@ void rotate(t_llist **target, int stack)
 	(*target) = start;
 	if (stack != AB)
 	{
-		op = stack == A ? "ra\n" : "rb\n";
+		if (stack == A)
+			op = "ra\n";
+		else
+			op = "rb\n";
 		print(op, 1);
 	}
 }
 
-void r_rotate(t_llist **target, int stack)
+void	r_rotate(t_llist **target, int stack)
 {
-	char *op;
-	t_llist *start;
-	t_llist *second;
+	char	*op;
+	t_llist	*start;
+	t_llist	*second;
 
 	if (!(*target) || !(*target)->next)
 		return ;
@@ -84,7 +93,10 @@ void r_rotate(t_llist **target, int stack)
 	(*target) = start;
 	if (stack != AB)
 	{
-		op = stack == A ? "rra\n" : "rrb\n";
+		if (stack == A)
+			op = "rra\n";
+		else
+			op = "rrb\n";
 		print(op, 1);
 	}
 }

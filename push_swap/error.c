@@ -6,25 +6,29 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:06 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/22 17:15:43 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/23 16:36:03 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void no_arg(int arc)
+void	check_arg(int arc, char *arv[])
 {
 	if (arc < 2)
 	{
 		print("There is no arguments\n", 2);
 		exit(0);
 	}
+	else if (arc == 2)
+	{
+
+	}
 }
 
-void not_int(char *arv[])
+void	not_int(char *arv[])
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (arv[++i])
@@ -32,9 +36,9 @@ void not_int(char *arv[])
 		j = -1;
 		while (arv[i][++j])
 		{
-			if ((j == 0 && arv[i][j] == '-' && (arv[i][j + 1] >= '1' && arv[i][j +1] <= '9')) ||
-			(arv[i][0] == '0' && arv[i][1] == 0))
-				continue;
+			if ((j == 0 && arv[i][j] == '-' && (arv[i][j + 1] >= '1' && arv[i][j
+				+ 1] <= '9')) || (arv[i][0] == '0' && arv[i][1] == 0))
+				continue ;
 			if (arv[i][0] == '0' || arv[i][j] < '0' || arv[i][j] > '9')
 			{
 				print("Some arguments aren't integers\n", 2);
@@ -44,10 +48,10 @@ void not_int(char *arv[])
 	}
 }
 
-void out_of_range(char *arv[])
+void	out_of_range(char *arv[])
 {
-	int i;
-	int flag;
+	int	i;
+	int	flag;
 
 	i = 0;
 	while (arv[++i])
@@ -66,27 +70,29 @@ void out_of_range(char *arv[])
 	}
 }
 
-void same_arg(char *arv[])
+void	same_arg(char *arv[])
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (arv[++i + 1])
 	{
 		j = i;
 		while (arv[++j])
+		{
 			if (ft_strcmp(arv[i], arv[j]))
 			{
 				print("There are duplicates\n", 2);
 				exit(0);
 			}
+		}
 	}
 }
 
-void error_check(int arc, char *arv[])
+void	error_check(int arc, char *arv[])
 {
-	no_arg(arc);
+	check_arg(arc, arv);
 	not_int(arv);
 	out_of_range(arv);
 	same_arg(arv);

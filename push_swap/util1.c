@@ -6,15 +6,15 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:29 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/22 22:56:36 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/23 17:40:24 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void freest(t_llist **a, t_llist **b)
+void	freest(t_llist **a, t_llist **b)
 {
-	t_llist *temp;
+	t_llist	*temp;
 
 	while (*a)
 	{
@@ -30,7 +30,7 @@ void freest(t_llist **a, t_llist **b)
 	}
 }
 
-int			ft_atoi(char *str, int *flag)
+int	ft_atoi(char *str, int *flag)
 {
 	unsigned long	res;
 	int				sign;
@@ -56,29 +56,29 @@ int			ft_atoi(char *str, int *flag)
 	return ((int)res * sign);
 }
 
-void change(int *a, int *b)
+void	change(int *a, int *b)
 {
-	int temp;
+	int	temp;
 
 	temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-void quickSort(int *arr, int start, int end)
+void	quickSort(int *arr, int start, int end)
 {
-	int i;
-	int j;
-	int key;
+	int	i;
+	int	j;
+	int	key;
 
 	if (start >= end)
-		return;
+		return ;
 	key = start;
-	i = start+1;
+	i = start + 1;
 	j = end;
 	while (i <= j)
 	{
-		while(arr[i] <= arr[key] && i <= end)
+		while (arr[i] <= arr[key] && i <= end)
 			i++;
 		while (arr[j] >= arr[key] && j > start)
 			j--;
@@ -87,13 +87,13 @@ void quickSort(int *arr, int start, int end)
 		else
 			change(&arr[i], &arr[j]);
 	}
-	quickSort(arr, start, j-1);
-	quickSort(arr, j+1, end);
+	quickSort(arr, start, j - 1);
+	quickSort(arr, j + 1, end);
 }
 
-int cnt_list(t_llist *list)
+int	cnt_list(t_llist *list)
 {
-	int idx;
+	int	idx;
 
 	idx = 0;
 	while (list)
@@ -102,4 +102,23 @@ int cnt_list(t_llist *list)
 		list = list->next;
 	}
 	return (idx);
+}
+
+void	find_pivot(t_llist *list, int cnt, int *pivot1, int *pivot2)
+{
+	int	i;
+	int	*arr;
+
+	i = 0;
+	arr = (int *)malloc(sizeof(int) * (cnt + 1));
+	arr[cnt] = 0;
+	while (i < cnt)
+	{
+		arr[i++] = list->element;
+		list = list->next;
+	}
+	quickSort(arr, 0, cnt - 1);
+	*pivot1 = arr[cnt / 3];
+	*pivot2 = arr[cnt * 2 / 3];
+	free(arr);
 }

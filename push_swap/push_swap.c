@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:02 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/22 16:22:57 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/23 00:12:02 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	push_swap(t_llist **a, t_llist **b)
 {
-	int cnt;
+	int	cnt;
 
 	cnt = cnt_list(*a);
 	if (!check_sorted(*a, cnt))
@@ -30,10 +30,10 @@ void	push_swap(t_llist **a, t_llist **b)
 	// 	sort(a, b, cnt);
 }
 
-int main(int arc, char *arv[])
+int	main(int arc, char *arv[])
 {
-	t_llist *a;
-	t_llist *b;
+	t_llist	*a;
+	t_llist	*b;
 
 	error_check(arc, arv);
 	init(&a, &b, arc, arv);

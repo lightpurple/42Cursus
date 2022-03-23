@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:45:16 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/19 21:38:27 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/23 00:12:44 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen(char *str)
 	return (len);
 }
 
-int ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	while (*s1)
 	{
@@ -36,7 +36,7 @@ int ft_strcmp(char *s1, char *s2)
 	return (1);
 }
 
-void print(char *str, int fd)
+void	print(char *str, int fd)
 {
 	write(fd, str, ft_strlen(str));
 }
