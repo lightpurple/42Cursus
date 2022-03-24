@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:24 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/23 17:42:03 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/24 16:26:28 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 # define RA 0
 # define RB 1
+# define PB 2
 typedef struct s_llist
 {
 	int				element;
@@ -84,5 +85,19 @@ void	find_pivot(t_llist *list, int cnt, int *pivot1, int *pivot2);
 int					is_sorted(t_llist *a);
 int					check_sorted(t_llist *a, int cnt);
 void				simple_sort(t_llist **a, t_llist **b, int cnt);
+
+/*
+*** sort_util.c ***
+*/
+void	sort_3_operator(t_llist **target, int type, int stack);
+void	rewind_stack(t_llist **a, t_llist **b, int ra, int rb);
+void	operator(t_llist **dst, t_llist **src, int *cnt, int op, int stack);
+
+/*
+*** sort.c ***
+*/
+void	sort(t_llist **a, t_llist **b, int cnt, int type);
+void	a_to_b(t_llist **a, t_llist **b, int cnt);
+void b_to_a(t_llist **a, t_llist **b, int cnt);
 
 #endif

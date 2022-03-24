@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:45:54 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/23 17:50:04 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/24 16:37:10 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	simple_sort_5(t_llist **a, t_llist **b)
 	find_pivot(*a, 5, &pivot, NULL);
 	while (pb != 2)
 	{
-		if ((*a)->element < pivot)
+		if ((*a)->element <= pivot)
 		{
 			push(b, a, B);
 			pb++;

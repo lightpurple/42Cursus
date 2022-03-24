@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:29 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/23 17:40:24 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/24 16:34:17 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,9 @@ void	find_pivot(t_llist *list, int cnt, int *pivot1, int *pivot2)
 		list = list->next;
 	}
 	quickSort(arr, 0, cnt - 1);
-	*pivot1 = arr[cnt / 3];
-	*pivot2 = arr[cnt * 2 / 3];
+	if (pivot1)
+		*pivot1 = arr[cnt / 3];
+	if (pivot2)
+		*pivot2 = arr[cnt * 2 / 3];
 	free(arr);
 }

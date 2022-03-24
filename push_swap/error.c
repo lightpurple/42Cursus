@@ -6,22 +6,18 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:06 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/23 16:36:03 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/24 16:20:33 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_arg(int arc, char *arv[])
+void	check_arg(int arc)
 {
 	if (arc < 2)
 	{
 		print("There is no arguments\n", 2);
 		exit(0);
-	}
-	else if (arc == 2)
-	{
-
 	}
 }
 
@@ -92,7 +88,7 @@ void	same_arg(char *arv[])
 
 void	error_check(int arc, char *arv[])
 {
-	check_arg(arc, arv);
+	check_arg(arc); // arv 추가하기
 	not_int(arv);
 	out_of_range(arv);
 	same_arg(arv);

@@ -6,105 +6,155 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:28:13 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/23 22:50:58 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/24 22:36:35 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	operator(t_llist **dst, t_llist **src, int *cnt, int op, int stack)
+void	push_n(t_llist **dst, t_llist **src, int stack, int n)
 {
-	(*cnt)++;
-	if (op == P)
+	while (n--)
 		push(dst, src, stack);
-	else if (op == R)
-		rotate(dst, stack);
-	else if (op == RR)
-		r_rotate(dst, stack);
-	else if (op == RRR)
-		r_rotate_both(dst, src);
 }
 
-void	sort_3(t_llist **a, t_llist **b)
+void	sort_2(t_llist **a, t_llist **b, int type)
 {
-	int	n1;
-	int	n2;
-	int	n3;
-
-	n1 = (*list)->element;
-	n2 = (*list)->next->element;
-	n3 = (*list)->next->next->element;
-	if (n1 > n2)
+	if (type == A)
+		if ((*a)->element > (*a)->next->element)
+			swap(a, A);
+	if (type == B)
 	{
-		if (n1 > n3)
+		if ((*b)->element < (*b)->next->element)
+			swap(b, B);
+		push_n(a, b, A, 2);
+	}
+}
+
+void	sort_3_b(t_llist **target)
+{
+	int num[3];
+
+	num[0] = (*target)->element;
+	num[1] = (*target)->next->element;
+	num[2] = (*target)->next->next->element;
+	if (num[0] < num[1] && num[0] < num[2])
+	{
+		sort_3_operator(target, 0, B);
+		if (num[1] < num[2])
+			sort_3_operator(target, 2, B);
+	}
+	else if (num[1] < num[0] && num[1] < num[2])
+	{
+		sort_3_operator(target, 1, B);
+		if (num[0] < num[2])
+			sort_3_operator(target, 2, B);
+	}
+	else if (num[0] < num[1])
+		sort_3_operator(target, 2, B);
+}
+
+void	sort_3_a(t_llist **target)
+{
+	int num[3];
+
+	num[0] = (*target)->element;
+	num[1] = (*target)->next->element;
+	num[2] = (*target)->next->next->element;
+	if (num[0] > num[1] && num[0] > num[2])
+	{
+		sort_3_operator(target, 0, A);
+		if (num[1] > num[2])
+			sort_3_operator(target, 2, A);
+	}
+	else if (num[1] > num[0] && num[1] > num[2])
+	{
+		sort_3_operator(target, 1, A);
+		if (num[0] > num[2])
+			sort_3_operator(target, 2, A);
+	}
+	else if (num[0] > num[1])
+		sort_3_operator(target, 2, A);
+}
+
+void	sort_5_b(t_llist **a, t_llist **b)
+{
+	int pa;
+	int rb;
+	int pivot;
+
+	pa = 0;
+	rb = 0;
+	find_pivot(*b, 5, NULL, &pivot);
+	while (pa != 2)
+	{
+		if ((*b)->element >= pivot)
 		{
-			rotate(list, A);
-			if (n2 > n3)
-				swap(list, A);
+			push(a, b, A);
+			pa++;
 		}
 		else
-			swap(list, A);
+			if (++rb)
+				rotate(b, B);
 	}
-	else if (n2 > n3)
-	{
-		r_rotate(list, A);
-		if (n1 < n3)
-			swap(list, A);
-	}
-}
-
-void	rewind_stack(t_llist **a, t_llist **b, int ra, int rb)
-{
-	while (ra-- && rb--)
-		operator(a, b, NULL, RRR, NULL);
-	while (ra--)
-		operator(a, NULL, NULL, RR, A);
 	while (rb--)
-		operator(b, NULL, NULL, RR, B);
+		r_rotate(b, B);
+	sort_3_b(b);
+	while (pa--)
+		push(b, a, B);
+	if ((*b)->element < (*b)->next->element)
+		swap(b, B);
 }
 
-void	a_to_b(t_llist **a, t_llist **b, int cnt)
+void	sort_5_a(t_llist **a, t_llist **b)
 {
-	int	op[2] = { 0, };
-	int	pivot1;
-	int pivot2;
+	int pb;
+	int ra;
+	int pivot;
 
-	if (cnt <= 3 || cnt == 5)
-		sort(a, b, cnt); // 3이하에대해서 처리하는 sort만들기
-	find_pivot(*a, cnt, &pivot1, &pivot2);
-	while (cnt--)
+	pb = 0;
+	ra = 0;
+	find_pivot(*a, 5, &pivot, NULL);
+	while (pb != 2)
 	{
-		if ((*a)->element >= pivot1)
+		if ((*a)->element <= pivot)
 		{
-			operator(b, a, NULL, P, B);
-			if ((*b)->element >= pivot2)
-				operator(b, NULL, op[RB], R, B);
+			push(b, a, B);
+			pb++;
 		}
 		else
-			operator(a, NULL, op[RA], R, A);
+			if (++ra)
+				rotate(a, A);
 	}
-	rewind_stack(a, b, op[RA], op[RB]);
+	while (ra--)
+		r_rotate(a, A);
+	sort_3_a(a);
+	while (pb--)
+		push(a, b, A);
+	if ((*a)->element > (*a)->next->element)
+		swap(a, A);
 }
 
-void b_to_a(t_llist **a, t_llist **b, int cnt)
+void	sort(t_llist **a, t_llist **b, int cnt, int type)
 {
-	int	op[2] = { 0, };
-	int	pivot1;
-	int pivot2;
-
-	if (cnt == 3 || cnt == 5)
-		sort(a, b, cnt);
-	find_pivot(*b, cnt, &pivot1, &pivot2);
-	while (cnt--)
+	if (cnt == 1 && type == B)
+		push(a, b, A);
+	else if (cnt == 2 && type == A)
+		sort_2(a, b, A);
+	else if (cnt == 2 && type == B)
+		sort_2(a, b, B);
+	else if (cnt == 3 && type == A)
+		sort_3_a(a);
+	else if (cnt == 3 && type == B)
 	{
-		if ((*b)->element <= pivot1)
-		{
-			operator(a, b, NULL, P, A);
-			if ((*a)->element <= pivot2)
-				operator(a, NULL, op[RA], R, A);
-		}
-		else
-			operator(b, NULL, op[RB], R, B);
+		sort_3_b(b);
+		push_n(a, b, A, cnt);
 	}
-	rewind_stack(a, b, op[RA], op[RB]);
+	else if (cnt == 5 && type == A)
+		sort_5_a(a, b);
+	else if (cnt == 5 && type == B)
+	{
+		sort_5_b(a, b);
+		push_n(a, b, A, cnt);
+	}
 }
