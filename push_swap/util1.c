@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:29 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/24 16:34:17 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/26 21:38:34 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,6 @@ void	freest(t_llist **a, t_llist **b)
 		free(*b);
 		*b = temp;
 	}
-}
-
-int	ft_atoi(char *str, int *flag)
-{
-	unsigned long	res;
-	int				sign;
-	int				i;
-
-	res = 0;
-	sign = 1;
-	i = 0;
-	if (str[i] == '-')
-	{
-		sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
-		if (sign == 1 && res > INTMAX)
-			*flag = -1;
-		else if (sign == -1 && res > INTMIN)
-			*flag = 0;
-	}
-	return ((int)res * sign);
 }
 
 void	change(int *a, int *b)

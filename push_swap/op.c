@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:20 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/23 00:17:55 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/26 23:15:00 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,14 @@ void	push(t_llist **dst, t_llist **src, int stack)
 	(*src) = (*src)->next;
 	temp->next = (*dst);
 	(*dst) = temp;
-	if (stack == A)
-		op = "pa\n";
-	else
-		op = "pb\n";
-	print(op, 1);
+	if (stack != AB)
+	{
+		if (stack == A)
+			op = "pa\n";
+		else
+			op = "pb\n";
+		print(op, 1);
+	}
 }
 
 void	rotate(t_llist **target, int stack)
