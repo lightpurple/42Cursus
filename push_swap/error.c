@@ -6,7 +6,7 @@
 /*   By: euhong <euhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 21:37:06 by euhong            #+#    #+#             */
-/*   Updated: 2022/03/26 21:52:00 by euhong           ###   ########.fr       */
+/*   Updated: 2022/03/27 00:26:37 by euhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	check_arg(int arc)
 {
 	if (arc < 2)
-	{
-		print("There is no arguments\n", 2);
 		exit(0);
-	}
 }
 
 void	not_int(char *arv[])
@@ -37,8 +34,8 @@ void	not_int(char *arv[])
 				continue ;
 			if (arv[i][0] == '0' || arv[i][j] < '0' || arv[i][j] > '9')
 			{
-				print("Some arguments aren't integers\n", 2);
-				exit(0);
+				print("Error\n", 2);
+				exit(1);
 			}
 		}
 	}
@@ -55,13 +52,13 @@ void	out_of_range(char *arv[])
 		ft_atoi(arv[i], &flag);
 		if (flag == -1)
 		{
-			print("Some arguments are bigger than an integer\n", 2);
-			exit(0);
+			print("Error\n", 2);
+			exit(1);
 		}
 		else if (flag == 0)
 		{
-			print("Some arguments are smaller than an integer\n", 2);
-			exit(0);
+			print("Error\n", 2);
+			exit(1);
 		}
 	}
 }
@@ -79,8 +76,8 @@ void	same_arg(char *arv[])
 		{
 			if (ft_strcmp(arv[i], arv[j]))
 			{
-				print("There are duplicates\n", 2);
-				exit(0);
+				print("Error\n", 2);
+				exit(1);
 			}
 		}
 	}
